@@ -227,9 +227,11 @@ namespace QLVT
             // 
             // tableCell1
             // 
+            this.tableCell1.BackColor = System.Drawing.Color.Green;
             this.tableCell1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.tableCell1.Name = "tableCell1";
             this.tableCell1.StyleName = "DetailCaption1";
+            this.tableCell1.StylePriority.UseBackColor = false;
             this.tableCell1.StylePriority.UseBorders = false;
             this.tableCell1.Text = "Ngày";
             this.tableCell1.TextFormatString = "{0:MMMM yyyy}";
@@ -237,25 +239,32 @@ namespace QLVT
             // 
             // tableCell2
             // 
+            this.tableCell2.BackColor = System.Drawing.Color.Green;
             this.tableCell2.Name = "tableCell2";
             this.tableCell2.ProcessDuplicatesMode = DevExpress.XtraReports.UI.ProcessDuplicatesMode.Merge;
             this.tableCell2.StyleName = "DetailCaption1";
+            this.tableCell2.StylePriority.UseBackColor = false;
             this.tableCell2.Text = "Tên VT";
             this.tableCell2.Weight = 0.24865848205890367D;
             // 
             // tableCell3
             // 
+            this.tableCell3.BackColor = System.Drawing.Color.Green;
             this.tableCell3.Name = "tableCell3";
             this.tableCell3.StyleName = "DetailCaption1";
+            this.tableCell3.StylePriority.UseBackColor = false;
             this.tableCell3.StylePriority.UseTextAlignment = false;
             this.tableCell3.Text = "Số lượng";
             this.tableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.tableCell3.TextFormatString = "{0:#,#}";
             this.tableCell3.Weight = 0.28634775098337734D;
             // 
             // tableCell4
             // 
+            this.tableCell4.BackColor = System.Drawing.Color.Green;
             this.tableCell4.Name = "tableCell4";
             this.tableCell4.StyleName = "DetailCaption1";
+            this.tableCell4.StylePriority.UseBackColor = false;
             this.tableCell4.StylePriority.UseTextAlignment = false;
             this.tableCell4.Text = "Trị giá";
             this.tableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
@@ -324,6 +333,7 @@ namespace QLVT
             this.tableCell7.StylePriority.UseBorders = false;
             this.tableCell7.StylePriority.UseTextAlignment = false;
             this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.tableCell7.TextFormatString = "{0:#,#}";
             this.tableCell7.Weight = 0.28634775098337734D;
             // 
             // tableCell8

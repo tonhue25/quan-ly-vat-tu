@@ -79,7 +79,7 @@ namespace QLVT
         private void btn_Preview_Click(object sender, EventArgs e)
         {
             Xrpt_TongHopNhapXuat report_TonghopNhapXuat = new Xrpt_TongHopNhapXuat(dateEdit1.DateTime, dateEdit2.DateTime);
-            report_TonghopNhapXuat.labelNgay.Text = "Từ ngày "+ dateEdit1.DateTime+" đến ngày "+ dateEdit2.DateTime;
+            report_TonghopNhapXuat.txtNgay.Text = "TỪ "+dateEdit1.DateTime.ToString()+" ĐẾN "+ dateEdit2.DateTime.ToString();
             ReportPrintTool printTool_TonghopNhapXuat = new ReportPrintTool(report_TonghopNhapXuat);
             printTool_TonghopNhapXuat.ShowPreviewDialog();
         }

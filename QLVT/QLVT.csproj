@@ -85,10 +85,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_NhanVien.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DS_TraCuu.Designer.cs">
+    <Compile Include="DS_TraCuuNhanVien.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DS_TraCuu.xsd</DependentUpon>
+      <DependentUpon>DS_TraCuuNhanVien.xsd</DependentUpon>
     </Compile>
     <Compile Include="DS_VT.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -205,6 +205,12 @@
     <Compile Include="XrptDDHChuaCoPN.Designer.cs">
       <DependentUpon>XrptDDHChuaCoPN.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xrpt_HoatDongNhanVien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Xrpt_HoatDongNhanVien.Designer.cs">
+      <DependentUpon>Xrpt_HoatDongNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xrpt_InDanhSachNhanVien.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     <EmbeddedResource Include="XrptDDHChuaCoPN.resx">
       <DependentUpon>XrptDDHChuaCoPN.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xrpt_HoatDongNhanVien.resx">
+      <DependentUpon>Xrpt_HoatDongNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xrpt_InDanhSachNhanVien.resx">
       <DependentUpon>Xrpt_InDanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,16 +339,16 @@
     <None Include="DS_NhanVien.xss">
       <DependentUpon>DS_NhanVien.xsd</DependentUpon>
     </None>
-    <None Include="DS_TraCuu.xsc">
-      <DependentUpon>DS_TraCuu.xsd</DependentUpon>
+    <None Include="DS_TraCuuNhanVien.xsc">
+      <DependentUpon>DS_TraCuuNhanVien.xsd</DependentUpon>
     </None>
-    <None Include="DS_TraCuu.xsd">
+    <None Include="DS_TraCuuNhanVien.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_TraCuu.Designer.cs</LastGenOutput>
+      <LastGenOutput>DS_TraCuuNhanVien.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DS_TraCuu.xss">
-      <DependentUpon>DS_TraCuu.xsd</DependentUpon>
+    <None Include="DS_TraCuuNhanVien.xss">
+      <DependentUpon>DS_TraCuuNhanVien.xsd</DependentUpon>
     </None>
     <None Include="DS_VT.xsc">
       <DependentUpon>DS_VT.xsd</DependentUpon>

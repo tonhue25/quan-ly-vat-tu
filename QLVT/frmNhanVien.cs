@@ -329,10 +329,5 @@ namespace QLVT
                 macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

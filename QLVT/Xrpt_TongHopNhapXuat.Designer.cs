@@ -34,8 +34,8 @@ namespace QLVT
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Xrpt_TongHopNhapXuat));
-            DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -47,7 +47,7 @@ namespace QLVT
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.labelNgay = new DevExpress.XtraReports.UI.XRLabel();
+            this.txtNgay = new DevExpress.XtraReports.UI.XRLabel();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.table1 = new DevExpress.XtraReports.UI.XRTable();
@@ -66,8 +66,9 @@ namespace QLVT
             this.tableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.labelTongNhap = new DevExpress.XtraReports.UI.XRLabel();
             this.labelTongXuat = new DevExpress.XtraReports.UI.XRLabel();
+            this.labelTongNhap = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -173,21 +174,21 @@ namespace QLVT
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.labelNgay,
+            this.txtNgay,
             this.label1});
             this.ReportHeader.HeightF = 125F;
             this.ReportHeader.Name = "ReportHeader";
             // 
-            // labelNgay
+            // txtNgay
             // 
-            this.labelNgay.LocationFloat = new DevExpress.Utils.PointFloat(175.2516F, 79.16666F);
-            this.labelNgay.Multiline = true;
-            this.labelNgay.Name = "labelNgay";
-            this.labelNgay.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.labelNgay.SizeF = new System.Drawing.SizeF(310.4167F, 23F);
-            this.labelNgay.StylePriority.UseTextAlignment = false;
-            this.labelNgay.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.labelNgay.TextFormatString = "{0:dd/MM/yyyy}";
+            this.txtNgay.LocationFloat = new DevExpress.Utils.PointFloat(137.2339F, 78.125F);
+            this.txtNgay.Multiline = true;
+            this.txtNgay.Name = "txtNgay";
+            this.txtNgay.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.txtNgay.SizeF = new System.Drawing.SizeF(393.226F, 23F);
+            this.txtNgay.StylePriority.UseTextAlignment = false;
+            this.txtNgay.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtNgay.TextFormatString = "{0:dd/MM/yyyy}";
             // 
             // label1
             // 
@@ -368,44 +369,62 @@ namespace QLVT
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel1,
             this.labelTongXuat,
             this.labelTongNhap});
             this.ReportFooter.HeightF = 61.70832F;
             this.ReportFooter.Name = "ReportFooter";
             // 
+            // labelTongXuat
+            // 
+            this.labelTongXuat.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([XUAT])")});
+            this.labelTongXuat.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.labelTongXuat.ForeColor = System.Drawing.Color.Red;
+            this.labelTongXuat.LocationFloat = new DevExpress.Utils.PointFloat(382.5433F, 23.54167F);
+            this.labelTongXuat.Multiline = true;
+            this.labelTongXuat.Name = "labelTongXuat";
+            this.labelTongXuat.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.labelTongXuat.SizeF = new System.Drawing.SizeF(147.9166F, 23F);
+            this.labelTongXuat.StylePriority.UseFont = false;
+            this.labelTongXuat.StylePriority.UseForeColor = false;
+            this.labelTongXuat.StylePriority.UseTextAlignment = false;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.labelTongXuat.Summary = xrSummary1;
+            this.labelTongXuat.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.labelTongXuat.TextFormatString = "{0:n1}";
+            // 
             // labelTongNhap
             // 
             this.labelTongNhap.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([NHAP])")});
-            this.labelTongNhap.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.labelTongNhap.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.labelTongNhap.ForeColor = System.Drawing.Color.Red;
             this.labelTongNhap.LocationFloat = new DevExpress.Utils.PointFloat(105.9839F, 23.54167F);
             this.labelTongNhap.Multiline = true;
             this.labelTongNhap.Name = "labelTongNhap";
-            this.labelTongNhap.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.labelTongNhap.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.labelTongNhap.SizeF = new System.Drawing.SizeF(170.1763F, 23F);
             this.labelTongNhap.StylePriority.UseFont = false;
+            this.labelTongNhap.StylePriority.UseForeColor = false;
             this.labelTongNhap.StylePriority.UseTextAlignment = false;
             xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.labelTongNhap.Summary = xrSummary2;
             this.labelTongNhap.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.labelTongNhap.TextFormatString = "{0:n1}";
             // 
-            // labelTongXuat
+            // xrLabel1
             // 
-            this.labelTongXuat.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([XUAT])")});
-            this.labelTongXuat.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.labelTongXuat.LocationFloat = new DevExpress.Utils.PointFloat(382.5433F, 23.54167F);
-            this.labelTongXuat.Multiline = true;
-            this.labelTongXuat.Name = "labelTongXuat";
-            this.labelTongXuat.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.labelTongXuat.SizeF = new System.Drawing.SizeF(147.9166F, 23F);
-            this.labelTongXuat.StylePriority.UseFont = false;
-            this.labelTongXuat.StylePriority.UseTextAlignment = false;
-            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.labelTongXuat.Summary = xrSummary1;
-            this.labelTongXuat.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.labelTongXuat.TextFormatString = "{0:n1}";
+            this.xrLabel1.ForeColor = System.Drawing.Color.Red;
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 23.54167F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(99.98386F, 23F);
+            this.xrLabel1.StylePriority.UseForeColor = false;
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "TỔNG CỘNG :";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // Xrpt_TongHopNhapXuat
             // 
@@ -464,9 +483,10 @@ namespace QLVT
         private DevExpress.XtraReports.UI.XRTableCell tableCell8;
         private DevExpress.XtraReports.UI.XRTableCell tableCell9;
         private DevExpress.XtraReports.UI.XRTableCell tableCell10;
-        public DevExpress.XtraReports.UI.XRLabel labelNgay;
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRLabel labelTongXuat;
         private DevExpress.XtraReports.UI.XRLabel labelTongNhap;
+        public DevExpress.XtraReports.UI.XRLabel txtNgay;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
     }
 }

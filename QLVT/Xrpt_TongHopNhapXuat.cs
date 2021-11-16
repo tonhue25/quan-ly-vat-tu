@@ -21,7 +21,5 @@ namespace QLVT
             this.sqlDataSource1.Queries[0].Parameters[1].Value = to;
             this.sqlDataSource1.Fill();
         }
-
-
     }
 }

@@ -16,6 +16,7 @@ namespace QLVT
         String loaiPhieu = "";
         String bd = "";
         String kt = "";
+        int loai = 0;
         String role = Program.mGroup;
         public frmChiTietSL()
         {
@@ -30,7 +31,7 @@ namespace QLVT
         // lay duoc loai phieu
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int loai = cmbChon.SelectedIndex;
+            loai = cmbChon.SelectedIndex;
             // 0 nhap
             // 1 xuat
             if(loai == 0)
@@ -48,15 +49,9 @@ namespace QLVT
             String[] string2 = dayKT.Text.Split('/');
            
             XrptChiTietSLTG report = new XrptChiTietSLTG(role,loaiPhieu, int.Parse(string1[0]), int.Parse(string1[1]), int.Parse(string2[0]), int.Parse(string2[1]));
+            report.label1.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ HÀNG ";
+            report.label1.Text += (loai == 0) ? "NHẬP" : "XUẤT";
 
-            if (loaiPhieu == "NHAP")
-            {
-                report.label1.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ HÀNG NHẬP";
-            }
-            if (loaiPhieu == "XUAT")
-            {
-                report.label1.Text = "BẢNG KÊ CHI TIẾT SỐ LƯỢNG - TRỊ GIÁ HÀNG XUẤT";
-            }
             ReportPrintTool printTool_TonghopNhapXuat = new ReportPrintTool(report);
             printTool_TonghopNhapXuat.ShowPreviewDialog();
         }

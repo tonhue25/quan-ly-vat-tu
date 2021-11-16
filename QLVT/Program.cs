@@ -95,7 +95,6 @@ namespace QLVT
             DataTable dt = new DataTable();
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd, conn);
-            // tai ve bang fill
             da.Fill(dt);
             conn.Close();
             return dt;
