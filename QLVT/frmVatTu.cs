@@ -116,34 +116,36 @@ namespace QLVT
                 txtSLT.Focus();
                 return;
             }
-            String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaVT.Text + "',MAVT";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
-            {
-                try
-                {
-                    bdsVT.EndEdit(); //ghi vào data set
-                    bdsVT.ResetCurrentItem();
-
-                    this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.vattuTableAdapter.Update(this.DS_VT.Vattu); //Ghi vào CSDL
-
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled =  true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    gcVatTu.Enabled = true;
-                    pnVatTu.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi Vật tư \n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
-            }
             else
             {
-                // them mà trùng thì ko vô được trường hợp này.
-                MessageBox.Show("Lỗi ghi vật tư\n Mã vật tư tồn tại!!!", "", MessageBoxButtons.OK);
-                return;
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaVT.Text + "',MAVT";
+                Program.kt = Program.ExecuteScalar(strLenh);
+                if (Program.kt == 0)
+                {
+                    try
+                    {
+                        bdsVT.EndEdit(); //ghi vào data set
+                        bdsVT.ResetCurrentItem();
+
+                        this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.vattuTableAdapter.Update(this.DS_VT.Vattu); //Ghi vào CSDL
+
+                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = btnUndo.Enabled = false;
+                        gcVatTu.Enabled = true;
+                        pnVatTu.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi Vật tư \n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi ghi vật tư\n Mã vật tư tồn tại!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
             }
         }
 
