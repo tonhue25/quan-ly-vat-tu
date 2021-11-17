@@ -178,72 +178,56 @@ namespace QLVT
                 txtMaCN.Focus();
                 return;
             }
-            /*String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
-            {
-                try
-                {
-                    bdsKho.EndEdit(); //ghi vào data set
-                    bdsKho.ResetCurrentItem();
-
-                    this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.khoTableAdapter.Update(this.DS_Kho.Kho); //Ghi vào CSDL
-
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    gcKho.Enabled = true;
-                    pnKho.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi Kho \n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
-            }
             else
             {
-                MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại!!!", "", MessageBoxButtons.OK);
-                return;
-            }*/
-            String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
-            {
-                try
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
+                Program.ExecSqlNonQuery(strLenh);
+                if (Program.kt == 0)
                 {
-                    bdsKho.EndEdit(); //ghi vào data set
-                    bdsKho.ResetCurrentItem();
+                    try
+                    {
+                        bdsKho.EndEdit();
+                        bdsKho.ResetCurrentItem();
 
-                    this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.khoTableAdapter.Update(this.DS_Kho.Kho); //Ghi vào CSDL
+                        this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.khoTableAdapter.Update(this.DS_Kho.Kho);
 
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    gcKho.Enabled = true;
-                    pnKho.Enabled = false;
+                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = btnUndo.Enabled = false;
+                        gcKho.Enabled = true;
+                        pnKho.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi kho \n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi ghi kho \n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại!!!", "", MessageBoxButtons.OK);
                     return;
                 }
-            }
-            else
-            {
-                // them mà trùng thì ko vô được trường hợp này.
-                MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại!!!", "", MessageBoxButtons.OK);
-                return;
             }
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bdsDH.Count + bdsPN.Count + bdsPX.Count > 0)
+            if (bdsDH.Count > 0)
             {
-                MessageBox.Show("Không thể xóa kho", "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể xóa kho vì đã tồn tại đơn hàng của kho", "", MessageBoxButtons.OK);
                 return;
             }
+            if (bdsPN.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa kho vì đã tồn tại phiếu nhập của kho", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (bdsPX.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa kho vì đã tồn tạo phiếu xuất của kho", "", MessageBoxButtons.OK);
+                return;
+            } // kiểm tra coi có xóa được ko
             if (MessageBox.Show("Bạn có thật sự muốn kho này", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try

@@ -324,7 +324,7 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)</Com
   <xs:element name="DS_Kho" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DS_Kho" msprop:Generator_UserDSName="DS_Kho">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ChiNhanh" msprop:Generator_TableClassName="ChiNhanhDataTable" msprop:Generator_TableVarName="tableChiNhanh" msprop:Generator_RowChangedName="ChiNhanhRowChanged" msprop:Generator_TablePropName="ChiNhanh" msprop:Generator_RowDeletingName="ChiNhanhRowDeleting" msprop:Generator_RowChangingName="ChiNhanhRowChanging" msprop:Generator_RowEvHandlerName="ChiNhanhRowChangeEventHandler" msprop:Generator_RowDeletedName="ChiNhanhRowDeleted" msprop:Generator_RowClassName="ChiNhanhRow" msprop:Generator_UserTableName="ChiNhanh" msprop:Generator_RowEvArgName="ChiNhanhRowChangeEvent">
+        <xs:element name="ChiNhanh" msprop:Generator_TableClassName="ChiNhanhDataTable" msprop:Generator_TableVarName="tableChiNhanh" msprop:Generator_TablePropName="ChiNhanh" msprop:Generator_RowDeletingName="ChiNhanhRowDeleting" msprop:Generator_RowChangingName="ChiNhanhRowChanging" msprop:Generator_RowEvHandlerName="ChiNhanhRowChangeEventHandler" msprop:Generator_RowDeletedName="ChiNhanhRowDeleted" msprop:Generator_UserTableName="ChiNhanh" msprop:Generator_RowChangedName="ChiNhanhRowChanged" msprop:Generator_RowEvArgName="ChiNhanhRowChangeEvent" msprop:Generator_RowClassName="ChiNhanhRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MACN" msprop:Generator_ColumnVarNameInTable="columnMACN" msprop:Generator_ColumnPropNameInRow="MACN" msprop:Generator_ColumnPropNameInTable="MACNColumn" msprop:Generator_UserColumnName="MACN">
@@ -358,7 +358,7 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DatHang" msprop:Generator_TableClassName="DatHangDataTable" msprop:Generator_TableVarName="tableDatHang" msprop:Generator_RowChangedName="DatHangRowChanged" msprop:Generator_TablePropName="DatHang" msprop:Generator_RowDeletingName="DatHangRowDeleting" msprop:Generator_RowChangingName="DatHangRowChanging" msprop:Generator_RowEvHandlerName="DatHangRowChangeEventHandler" msprop:Generator_RowDeletedName="DatHangRowDeleted" msprop:Generator_RowClassName="DatHangRow" msprop:Generator_UserTableName="DatHang" msprop:Generator_RowEvArgName="DatHangRowChangeEvent">
+        <xs:element name="DatHang" msprop:Generator_TableClassName="DatHangDataTable" msprop:Generator_TableVarName="tableDatHang" msprop:Generator_TablePropName="DatHang" msprop:Generator_RowDeletingName="DatHangRowDeleting" msprop:Generator_RowChangingName="DatHangRowChanging" msprop:Generator_RowEvHandlerName="DatHangRowChangeEventHandler" msprop:Generator_RowDeletedName="DatHangRowDeleted" msprop:Generator_UserTableName="DatHang" msprop:Generator_RowChangedName="DatHangRowChanged" msprop:Generator_RowEvArgName="DatHangRowChangeEvent" msprop:Generator_RowClassName="DatHangRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MasoDDH" msprop:Generator_ColumnVarNameInTable="columnMasoDDH" msprop:Generator_ColumnPropNameInRow="MasoDDH" msprop:Generator_ColumnPropNameInTable="MasoDDHColumn" msprop:Generator_UserColumnName="MasoDDH">
@@ -387,7 +387,7 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Kho" msprop:Generator_TableClassName="KhoDataTable" msprop:Generator_TableVarName="tableKho" msprop:Generator_RowChangedName="KhoRowChanged" msprop:Generator_TablePropName="Kho" msprop:Generator_RowDeletingName="KhoRowDeleting" msprop:Generator_RowChangingName="KhoRowChanging" msprop:Generator_RowEvHandlerName="KhoRowChangeEventHandler" msprop:Generator_RowDeletedName="KhoRowDeleted" msprop:Generator_RowClassName="KhoRow" msprop:Generator_UserTableName="Kho" msprop:Generator_RowEvArgName="KhoRowChangeEvent">
+        <xs:element name="Kho" msprop:Generator_TableClassName="KhoDataTable" msprop:Generator_TableVarName="tableKho" msprop:Generator_TablePropName="Kho" msprop:Generator_RowDeletingName="KhoRowDeleting" msprop:Generator_RowChangingName="KhoRowChanging" msprop:Generator_RowEvHandlerName="KhoRowChangeEventHandler" msprop:Generator_RowDeletedName="KhoRowDeleted" msprop:Generator_UserTableName="Kho" msprop:Generator_RowChangedName="KhoRowChanged" msprop:Generator_RowEvArgName="KhoRowChangeEvent" msprop:Generator_RowClassName="KhoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MAKHO" msprop:Generator_ColumnVarNameInTable="columnMAKHO" msprop:Generator_ColumnPropNameInRow="MAKHO" msprop:Generator_ColumnPropNameInTable="MAKHOColumn" msprop:Generator_UserColumnName="MAKHO">
@@ -421,7 +421,7 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PhieuNhap" msprop:Generator_TableClassName="PhieuNhapDataTable" msprop:Generator_TableVarName="tablePhieuNhap" msprop:Generator_RowChangedName="PhieuNhapRowChanged" msprop:Generator_TablePropName="PhieuNhap" msprop:Generator_RowDeletingName="PhieuNhapRowDeleting" msprop:Generator_RowChangingName="PhieuNhapRowChanging" msprop:Generator_RowEvHandlerName="PhieuNhapRowChangeEventHandler" msprop:Generator_RowDeletedName="PhieuNhapRowDeleted" msprop:Generator_RowClassName="PhieuNhapRow" msprop:Generator_UserTableName="PhieuNhap" msprop:Generator_RowEvArgName="PhieuNhapRowChangeEvent">
+        <xs:element name="PhieuNhap" msprop:Generator_TableClassName="PhieuNhapDataTable" msprop:Generator_TableVarName="tablePhieuNhap" msprop:Generator_TablePropName="PhieuNhap" msprop:Generator_RowDeletingName="PhieuNhapRowDeleting" msprop:Generator_RowChangingName="PhieuNhapRowChanging" msprop:Generator_RowEvHandlerName="PhieuNhapRowChangeEventHandler" msprop:Generator_RowDeletedName="PhieuNhapRowDeleted" msprop:Generator_UserTableName="PhieuNhap" msprop:Generator_RowChangedName="PhieuNhapRowChanged" msprop:Generator_RowEvArgName="PhieuNhapRowChangeEvent" msprop:Generator_RowClassName="PhieuNhapRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MAPN" msprop:Generator_ColumnVarNameInTable="columnMAPN" msprop:Generator_ColumnPropNameInRow="MAPN" msprop:Generator_ColumnPropNameInTable="MAPNColumn" msprop:Generator_UserColumnName="MAPN">
@@ -450,7 +450,7 @@ SELECT MAPX, NGAY, HOTENKH, MANV, MAKHO FROM PhieuXuat WHERE (MAPX = @MAPX)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PhieuXuat" msprop:Generator_TableClassName="PhieuXuatDataTable" msprop:Generator_TableVarName="tablePhieuXuat" msprop:Generator_RowChangedName="PhieuXuatRowChanged" msprop:Generator_TablePropName="PhieuXuat" msprop:Generator_RowDeletingName="PhieuXuatRowDeleting" msprop:Generator_RowChangingName="PhieuXuatRowChanging" msprop:Generator_RowEvHandlerName="PhieuXuatRowChangeEventHandler" msprop:Generator_RowDeletedName="PhieuXuatRowDeleted" msprop:Generator_RowClassName="PhieuXuatRow" msprop:Generator_UserTableName="PhieuXuat" msprop:Generator_RowEvArgName="PhieuXuatRowChangeEvent">
+        <xs:element name="PhieuXuat" msprop:Generator_TableClassName="PhieuXuatDataTable" msprop:Generator_TableVarName="tablePhieuXuat" msprop:Generator_TablePropName="PhieuXuat" msprop:Generator_RowDeletingName="PhieuXuatRowDeleting" msprop:Generator_RowChangingName="PhieuXuatRowChanging" msprop:Generator_RowEvHandlerName="PhieuXuatRowChangeEventHandler" msprop:Generator_RowDeletedName="PhieuXuatRowDeleted" msprop:Generator_UserTableName="PhieuXuat" msprop:Generator_RowChangedName="PhieuXuatRowChanged" msprop:Generator_RowEvArgName="PhieuXuatRowChangeEvent" msprop:Generator_RowClassName="PhieuXuatRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MAPX" msprop:Generator_ColumnVarNameInTable="columnMAPX" msprop:Generator_ColumnPropNameInRow="MAPX" msprop:Generator_ColumnPropNameInTable="MAPXColumn" msprop:Generator_UserColumnName="MAPX">
