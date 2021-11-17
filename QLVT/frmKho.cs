@@ -141,15 +141,12 @@ namespace QLVT
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // giu lai de dung trong phuc hoi.
             vitri = bdsKho.Position;
             // cho khung nhap lieu sang len de nhap.
             pnKho.Enabled = true;
             bdsKho.AddNew();
             txtMaCN.Text = macn;
             
-            // them moi thi chi cho luu va undo thoi.
-            // tat luoi
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
             gcKho.Enabled = false;
@@ -181,7 +178,7 @@ namespace QLVT
                 txtMaCN.Focus();
                 return;
             }
-            String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
+            /*String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
             Program.ExecSqlNonQuery(strLenh);
             if (Program.kt == 0)
             {
@@ -208,6 +205,35 @@ namespace QLVT
             {
                 MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại!!!", "", MessageBoxButtons.OK);
                 return;
+            }*/
+            String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
+            Program.ExecSqlNonQuery(strLenh);
+            if (Program.kt == 0)
+            {
+                try
+                {
+                    bdsKho.EndEdit(); //ghi vào data set
+                    bdsKho.ResetCurrentItem();
+
+                    this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.khoTableAdapter.Update(this.DS_Kho.Kho); //Ghi vào CSDL
+
+                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                    btnGhi.Enabled = btnUndo.Enabled = false;
+                    gcKho.Enabled = true;
+                    pnKho.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi ghi kho \n" + ex.Message, "", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                // them mà trùng thì ko vô được trường hợp này.
+                MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại!!!", "", MessageBoxButtons.OK);
+                return;
             }
         }
 
@@ -231,7 +257,6 @@ namespace QLVT
                     {
                         MessageBox.Show("Xóa kho thành công");
                     }
-                    // xóa trên màn hình.
                     bdsKho.RemoveCurrent();
                     Program.myReader.Close();
                     Program.conn.Close();
