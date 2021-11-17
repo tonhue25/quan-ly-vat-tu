@@ -181,7 +181,7 @@ namespace QLVT
             else
             {
                 String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
-                Program.ExecSqlNonQuery(strLenh);
+                Program.kt = Program.ExecuteScalar(strLenh);
                 if (Program.kt == 0)
                 {
                     try
