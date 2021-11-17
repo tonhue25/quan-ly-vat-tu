@@ -204,7 +204,6 @@ namespace QLVT
                     return;
                 }
             }
-            // không vô trong đoạn này được.??? 
             else
             {
                 MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại!!!", "", MessageBoxButtons.OK);
@@ -232,6 +231,7 @@ namespace QLVT
                     {
                         MessageBox.Show("Xóa kho thành công");
                     }
+                    // xóa trên màn hình.
                     bdsKho.RemoveCurrent();
                     Program.myReader.Close();
                     Program.conn.Close();
