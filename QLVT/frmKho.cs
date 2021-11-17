@@ -204,6 +204,7 @@ namespace QLVT
                     return;
                 }
             }
+            // không vô trong đoạn này được.??? 
             else
             {
                 MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại!!!", "", MessageBoxButtons.OK);
