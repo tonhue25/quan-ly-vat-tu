@@ -88,32 +88,33 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
-            // kiểm tra maDDH + maVT => trùng ko
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MACTDDH N'" + txtMaDDH.Text + "',N'"+txtMaVT.Text + "'";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
-            {
-                try
-                {
-                    bdsCTDDH.EndEdit(); //ghi vào data set
-                    bdsCTDDH.ResetCurrentItem();
-
-                    // thêm vào chi tiết đặt hàng của đơn đặt hàng đó, chứ ko phải update vật tư nha.
-                    this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.cTDDHTableAdapter.Update(this.dS_DH.CTDDH); //Ghi vào CSDL
-                    MessageBox.Show("Thêm chi tiết đơn hàng "+Program.maDDH+ " thành công !!!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng "+Program.maDDH+"\n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
-            }
             else
             {
-                // them mà trùng thì ko vô được trường hợp này.
-                    MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng "+Program.maDDH+"\n Mã đơn hàng và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
-                return;
+                String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaDDH.Text +"',"+txtMaVT.Text+",MACTDDH";
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
+                {
+                    try
+                    {
+                        bdsCTDDH.EndEdit(); //ghi vào data set
+                        bdsCTDDH.ResetCurrentItem();
+
+                        // thêm vào chi tiết đặt hàng của đơn đặt hàng đó, chứ ko phải update vật tư nha.
+                        this.cTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.cTDDHTableAdapter.Update(this.dS_DH.CTDDH); //Ghi vào CSDL
+                        MessageBox.Show("Thêm chi tiết đơn hàng " + Program.maDDH + " thành công !!!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng " + Program.maDDH + "\n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng " + Program.maDDH + "\n Mã đơn hàng và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
+                    return;
+                }
             }
         }
     }

@@ -173,38 +173,47 @@ namespace QLVT
                 txtMaKho.Focus();
                 return;
             }
-            ((DataRowView)bdsDH[bdsDH.Position])["MANV"] = Program.username;
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MADDH N'" + txtMaDDH.Text + "'";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
-            {
-                try
-                {
-                    this.bdsDH.EndEdit();
-                    bdsDH.ResetCurrentItem();
-
-                    this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.datHangTableAdapter.Update(this.dS_DH.DatHang);
-
-                    MessageBox.Show("Thêm đơn đặt hàng thành công!!!!");
-                    
-                    gcDH.Enabled = true;
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    pnNhap.Enabled = false;
-                    gcCTDDH.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi đơn đặt hàng \n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
-            } 
             else
             {
-                MessageBox.Show("Lỗi ghi đơn đặt hàng \n Mã đơn tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
-                return;
-            };
+                ((DataRowView)bdsDH[bdsDH.Position])["MANV"] = Program.username;
+
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaDDH.Text + "',MADDH";
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
+                {
+                    try
+                    {
+                        this.bdsDH.EndEdit();
+                        bdsDH.ResetCurrentItem();
+
+                        this.datHangTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.datHangTableAdapter.Update(this.dS_DH.DatHang);
+
+                        MessageBox.Show("Thêm đơn đặt hàng thành công!!!!");
+
+                        gcDH.Enabled = true;
+                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = btnUndo.Enabled = false;
+                        pnNhap.Enabled = false;
+                        gcCTDDH.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi đơn đặt hàng \n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                else if (kt == 1)
+                {
+                    MessageBox.Show("Lỗi ghi đơn đặt hàng \n Mã đơn đã tồn tại", "", MessageBoxButtons.OK);
+                    return;
+                }
+                else if(kt == 2)
+                {
+                    MessageBox.Show("Lỗi ghi đơn đặt hàng \n Mã đơn đã tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
+                    return;
+                }
+            }
 
         }
 

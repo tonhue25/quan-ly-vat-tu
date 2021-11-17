@@ -180,9 +180,31 @@ namespace QLVT
             }
             else
             {
-                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
-                Program.kt = Program.ExecuteScalar(strLenh);
-                if (Program.kt == 0)
+                String strLenh1 = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
+                String strLenh2 = "EXECUTE dbo.SP_KT_ID N'" + txtTenKho.Text + "',TENKHO";
+                int ktTrungMaKho = Program.ExecuteScalar(strLenh1);
+                int ktTrungTenKho = Program.ExecuteScalar(strLenh2);
+                if (ktTrungMaKho == 1)
+                {
+                    MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại trong chi nhánh!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (ktTrungMaKho == 2)
+                {
+                    MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại trong chi nhánh khác!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (ktTrungTenKho == 1)
+                {
+                    MessageBox.Show("Lỗi ghi kho\n Tên kho đã tồn tại trong chi nhánh!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (ktTrungTenKho == 2)
+                {
+                    MessageBox.Show("Lỗi ghi kho\n Tên kho tồn tại trong chi nhánh khác!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (ktTrungMaKho == 0 && ktTrungTenKho == 0)
                 {
                     try
                     {
@@ -203,16 +225,7 @@ namespace QLVT
                         return;
                     }
                 }
-                if (Program.kt == 1)
-                {
-                    MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại trong chi nhánh!!!", "", MessageBoxButtons.OK);
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại trong chi nhánh khác!!!", "", MessageBoxButtons.OK);
-                    return;
-                }
+                
             }
         }
 
@@ -240,7 +253,6 @@ namespace QLVT
                     String makho = ((DataRowView)bdsKho[bdsKho.Position])["MAKHO"].ToString();
                     if (Program.KetNoi() == 0) return;
                     String strLenh = "EXECUTE dbo.SP_XOAKHO N'" + makho + "'";
-
                     int kq = Program.ExecSqlNonQuery(strLenh);
                     if (kq == 0)
                     {

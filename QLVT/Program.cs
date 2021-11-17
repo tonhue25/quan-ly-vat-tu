@@ -43,7 +43,6 @@ namespace QLVT
         public static frmHDNV formHDNV;
         public static frmTHNX formTHNX;
 
-        public static int kt;
         public static String maKho = "";
         public static String maDDH = "";
         public static String maPN = "";
@@ -130,7 +129,7 @@ namespace QLVT
             if (conn.State == ConnectionState.Closed) conn.Open();
             try
             {
-                kt = (int)sqlcmd.ExecuteScalar();
+                int kt = (int)sqlcmd.ExecuteScalar();
                 conn.Close();
                 return kt;
             }

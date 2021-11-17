@@ -63,9 +63,9 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MACTPN N'" + txtMaPN.Text + "',N'" + txtMaVT.Text + "'";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
+            String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPN.Text + "'," + txtMaVT.Text + ",MAPN";
+            int kt = Program.ExecuteScalar(strLenh);
+            if (kt == 0)
             {
                 try
                 {

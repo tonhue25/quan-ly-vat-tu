@@ -118,9 +118,11 @@ namespace QLVT
             }
             else
             {
-                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaVT.Text + "',MAVT";
-                Program.kt = Program.ExecuteScalar(strLenh);
-                if (Program.kt == 0)
+                String strLenh1 = "EXECUTE dbo.SP_KT_ID N'" + txtMaVT.Text + "',MAVT";
+               int kt1  = Program.ExecuteScalar(strLenh1);
+                String strLenh2 = "EXECUTE dbo.SP_KT_ID N'" + txtTenVT.Text + "',TENVT";
+                int kt2 = Program.ExecuteScalar(strLenh2);
+                if (kt1 == 0 && kt2 == 0)
                 {
                     try
                     {
@@ -141,9 +143,14 @@ namespace QLVT
                         return;
                     }
                 }
-                else
+                else if(kt1 == 1)
                 {
-                    MessageBox.Show("Lỗi ghi vật tư\n Mã vật tư tồn tại!!!", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi ghi vật tư\n Mã vật tư đã tồn tại!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                else if (kt2 == 1)
+                {
+                    MessageBox.Show("Lỗi ghi vật tư\n Tên vật tư đã tồn tại!!!", "", MessageBoxButtons.OK);
                     return;
                 }
             }

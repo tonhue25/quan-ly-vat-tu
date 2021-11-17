@@ -83,19 +83,16 @@ namespace QLVT
             else
             {
                 String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',MANV";
-                Program.kt = Program.ExecuteScalar(strLenh);
-                if (Program.kt == 0)
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
                 {
                     try
                     {
                         this.bdsNV.EndEdit();
                         bdsNV.ResetCurrentItem();
-
                         this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
-
-                        MessageBox.Show("Update successful");
-
+                        MessageBox.Show("Thêm nhân viên thành công!!!!");
                         gcNhanVien.Enabled = true;
                         btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                         btnGhi.Enabled = btnUndo.Enabled = false;
@@ -107,7 +104,7 @@ namespace QLVT
                         return;
                     }
                 }
-                else if (Program.kt == 1)
+                else if (kt == 1)
                 {
                     MessageBox.Show("Mã nhân viên đã tồn tại trong cùng chi nhánh!!", "", MessageBoxButtons.OK);
                     return;

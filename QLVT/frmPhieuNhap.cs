@@ -136,37 +136,45 @@ namespace QLVT
                 txtMaKho.Focus();
                 return;
             }
-            ((DataRowView)bdsPN[bdsPN.Position])["MANV"] = Program.username;
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MAPN N'" + txtMaPN.Text + "'";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
+            else
             {
-                try
+                ((DataRowView)bdsPN[bdsPN.Position])["MANV"] = Program.username;
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaPN.Text + "',MAPN";
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
                 {
-                    this.bdsPN.EndEdit();
-                    bdsPN.ResetCurrentItem();
+                    try
+                    {
+                        this.bdsPN.EndEdit();
+                        bdsPN.ResetCurrentItem();
 
-                    this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.phieuNhapTableAdapter.Update(this.dS_DH.PhieuNhap);
+                        this.phieuNhapTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.phieuNhapTableAdapter.Update(this.dS_DH.PhieuNhap);
 
-                    MessageBox.Show("Thêm phiếu nhập thành công!!!!");
+                        MessageBox.Show("Thêm phiếu nhập thành công!!!!");
 
-                    gcDH.Enabled = true;
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    pnNhap.Enabled = false;
+                        gcDH.Enabled = true;
+                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = btnUndo.Enabled = false;
+                        pnNhap.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi phiếu nhập \n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
                 }
-                catch (Exception ex)
+                else if (kt == 2)
                 {
-                    MessageBox.Show("Lỗi ghi phiếu nhập \n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi ghi phiếu nhập \n Mã phiếu nhập đã tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi ghi phiếu nhập \n Mã phiếu nhập đã tồn tại", "", MessageBoxButtons.OK);
                     return;
                 }
             }
-            else
-            {
-                MessageBox.Show("Lỗi ghi phiếu nhập \n Mã đơn tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
-                return;
-            };
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -213,7 +221,6 @@ namespace QLVT
         {
             Program.maPN = txtMaPN.Text;
             Program.maDDH = getDataRow(bdsDH, "MasoDDH");
-            /*Program.maDDH = getDataRow(bdsDH, "MasoDDH");*/
         }
     }
 }

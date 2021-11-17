@@ -166,38 +166,46 @@ namespace QLVT
                 txtMaKho.Focus();
                 return;
             }
-             ((DataRowView)bdsPX[bdsPX.Position])["MANV"] = Program.username;
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MAPX N'" + txtMaPX.Text + "'";
-            Program.ExecSqlNonQuery(strLenh);
-            if (Program.kt == 0)
+            else
             {
-                try
+                ((DataRowView)bdsPX[bdsPX.Position])["MANV"] = Program.username;
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaPX.Text + "',MAPX";
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
                 {
-                    this.bdsPX.EndEdit();
-                    bdsPX.ResetCurrentItem();
+                    try
+                    {
+                        this.bdsPX.EndEdit();
+                        bdsPX.ResetCurrentItem();
 
-                    this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.phieuXuatTableAdapter.Update(this.dS_DH.PhieuXuat);
+                        this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.phieuXuatTableAdapter.Update(this.dS_DH.PhieuXuat);
 
-                    MessageBox.Show("Thêm phiếu xuất thành công!!!!");
+                        MessageBox.Show("Thêm phiếu xuất thành công!!!!");
 
-                    gcPX.Enabled = true;
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    pnNhap.Enabled = false;
-                    gcCTPX.Enabled = false;
+                        gcPX.Enabled = true;
+                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = btnUndo.Enabled = false;
+                        pnNhap.Enabled = false;
+                        gcCTPX.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi phiếu xuất \n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
                 }
-                catch (Exception ex)
+                else if (kt == 2)
                 {
-                    MessageBox.Show("Lỗi ghi phiếu xuất \n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi ghi phiếu xuất \n Mã phiếu xuất đã tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
+                    return;
+                }
+                else 
+                {
+                    MessageBox.Show("Lỗi ghi phiếu xuất \n Mã phiếu xuất đã tồn tại", "", MessageBoxButtons.OK);
                     return;
                 }
             }
-            else
-            {
-                MessageBox.Show("Lỗi ghi phiếu xuất \n Mã đơn tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
-                return;
-            };
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -205,6 +213,11 @@ namespace QLVT
             Program.subFormKho = new subformKho();
             Program.subFormKho.Show();
             Program.frmChinh.Enabled = false;
+        }
+
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
