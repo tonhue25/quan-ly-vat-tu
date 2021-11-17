@@ -44,7 +44,6 @@ namespace QLVT
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // trc khi ghi : kiem tra rang buoc cua bai toan (du lieu : null, sai dinh dang...)
             if (txtMaNV.Text.Trim() == "")
             {
                 MessageBox.Show("Mã nhân viên không được trống!!!", "", MessageBoxButtons.OK);
@@ -81,48 +80,45 @@ namespace QLVT
                 dtpNgaySinh.Focus();
                 return;
             }
-            
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MANV N'" + txtMaNV.Text + "'";
-            Program.ExecuteScalar(strLenh);
-
-            // != 2 : tồn tại ở chi nhánh khác.
-            // 0 = đc thêm
-            // 1 = tồn tại ở chi nhánh hiện tại.
-            // đối với nhân viên, kho : tìm ở site hiện tại, site tìm kiếm, site chủ.
-            if (Program.kt == 0)
+            else
             {
-                try
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',N'MANV'";
+                Program.ExecuteScalar(strLenh);
+                // == 2 la da ton tai o chi nhanh khac.
+                if (Program.kt != 2)
                 {
-                    this.Validate();
-                    this.bdsNV.EndEdit();
-                    bdsNV.ResetCurrentItem();
+                    try
+                    {
+                        this.Validate();
+                        this.bdsNV.EndEdit();
+                        bdsNV.ResetCurrentItem();
 
-                    this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                    
-                    this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
-                    MessageBox.Show("Update successful");
+                        this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
+                        
+                        MessageBox.Show("Update successful");
 
-                    gcNhanVien.Enabled = true;
-                    btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                    btnGhi.Enabled = btnUndo.Enabled = false;
-                    groupBox1.Enabled = false;
+                        gcNhanVien.Enabled = true;
+                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnGhi.Enabled = btnUndo.Enabled = false;
+                        groupBox1.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi nhân viên \n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi ghi nhân viên \n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi ghi nhân viên \n Mã Nhân viên tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
                     return;
                 }
             }
-            else
-            {
-                MessageBox.Show("Lỗi ghi nhân viên \n Mã Nhân viên tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
-                return;
-            };
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // dau tien can kiem tra nhan vien nay co xoa duoc hay ko??? =>neu ok thi cho xoa.
             Int32 manv = 0;
             if (bdsDH.Count > 0)
             {
@@ -254,9 +250,6 @@ namespace QLVT
             this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
             this.phieuXuatTableAdapter.Fill(this.DS_NhanVien.PhieuXuat);
 
-            //dong nay van tiem an loi, tu xu ly, xac xuat loi thap, nhung ma van co.
-            // neu khong bat thi se dung chuong trinh.
-
             macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
             cmbChiNhanh.DataSource = Program.bds_dspm;
             cmbChiNhanh.DisplayMember = "TENCN";
@@ -265,12 +258,10 @@ namespace QLVT
             if (Program.mGroup == "CONGTY")
             {
                 cmbChiNhanh.Enabled = btn_InDSNV.Enabled = true;
-                // khong duoc them xoa sua, => ko can phuc hoi
                 btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
             }
             else
             {
-                // nhom khac
                 btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
                 cmbChiNhanh.Enabled = btn_InDSNV.Enabled = false;
             }

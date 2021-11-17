@@ -34,7 +34,6 @@ namespace QLVT
         public static BindingSource bds_dspm = new BindingSource();
        
         public static frmMain frmChinh;
-        //public static frmDDH frmDDH;
         public static subformKho subFormKho;
         public static subformCTDDH subFormCTDDH;
         public static subformCTPX subFormCTPX;
@@ -125,19 +124,27 @@ namespace QLVT
         public static int ExecuteScalar(String cmd)
         {
 
-            SqlCommand sqlcmd = new SqlCommand();
-            sqlcmd.Connection = Program.conn;
-            sqlcmd.CommandText = cmd;
+            //SqlCommand sqlcmd = new SqlCommand();
+            //sqlcmd.Connection = Program.conn;
+            //sqlcmd.CommandText = cmd;
+            SqlCommand sqlcmd = new SqlCommand(cmd, conn);
             sqlcmd.CommandType = CommandType.Text;
             sqlcmd.CommandTimeout = 600; //Chỉ dùng cho cơ sở dữ liệu lớn
 
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
             try
             {
-                kt = (int)sqlcmd.ExecuteScalar();
-                return 1;
+                String ketQua = (String)sqlcmd.ExecuteScalar();
+                if (ketQua == null) {
+                    return 0;
+                }
+                else
+                {
+                    kt = int.Parse(ketQua);
+                    return kt;
+                }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 Program.conn.Close();
                 MessageBox.Show(ex.Message);

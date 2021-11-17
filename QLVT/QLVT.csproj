@@ -119,6 +119,12 @@
     <Compile Include="frmHDNV.Designer.cs">
       <DependentUpon>frmHDNV.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhanVien.designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTHNX.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,12 +142,6 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNhanVien.Designer.cs">
-      <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPhieuNhap.cs">
       <SubType>Form</SubType>
@@ -241,6 +241,9 @@
     <EmbeddedResource Include="frmHDNV.resx">
       <DependentUpon>frmHDNV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTHNX.resx">
       <DependentUpon>frmTHNX.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,9 +252,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNhanVien.resx">
-      <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuNhap.resx">
       <DependentUpon>frmPhieuNhap.cs</DependentUpon>
