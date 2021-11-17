@@ -203,9 +203,14 @@ namespace QLVT
                         return;
                     }
                 }
+                if (Program.kt == 1)
+                {
+                    MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại trong chi nhánh!!!", "", MessageBoxButtons.OK);
+                    return;
+                }
                 else
                 {
-                    MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại!!!", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi ghi kho\n Mã kho tồn tại trong chi nhánh khác!!!", "", MessageBoxButtons.OK);
                     return;
                 }
             }
