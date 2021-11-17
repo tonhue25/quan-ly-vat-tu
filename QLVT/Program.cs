@@ -124,31 +124,33 @@ namespace QLVT
         public static int ExecuteScalar(String cmd)
         {
 
-            //SqlCommand sqlcmd = new SqlCommand();
-            //sqlcmd.Connection = Program.conn;
-            //sqlcmd.CommandText = cmd;
-            SqlCommand sqlcmd = new SqlCommand(cmd, conn);
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Program.conn;
+            sqlcmd.CommandText = cmd;
             sqlcmd.CommandType = CommandType.Text;
             sqlcmd.CommandTimeout = 600; //Chỉ dùng cho cơ sở dữ liệu lớn
 
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
             try
             {
+                //return null => không chuyển kiểu được á.
+                // khi nó return null : trùng trong chi nhánh, or trùng bên chi nhánh khác.
                 String ketQua = (String)sqlcmd.ExecuteScalar();
-                if (ketQua == null) {
-                    return 0;
+                if (ketQua == null)
+                {
+                    return 2;
                 }
                 else
                 {
-                    kt = int.Parse(ketQua);
-                    return kt;
+                    kt = (int)sqlcmd.ExecuteScalar();
+                    return 1;
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 Program.conn.Close();
                 MessageBox.Show(ex.Message);
-                return 0;
+                return ex.State;
             }
         }
 

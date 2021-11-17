@@ -83,7 +83,7 @@ namespace QLVT
             txtMaVT.Enabled = true;
             this.bdsVT.AddNew();
             btnThem.Enabled = btnXoa.Enabled = gcVatTu.Enabled = btnReload.Enabled = btnUndo.Enabled = false;
-            btnGhi.Enabled = pnVatTu.Enabled = btn_inds.Enabled = true;
+            btnGhi.Enabled = btnUndo.Enabled  = pnVatTu.Enabled = btn_inds.Enabled = true;
 
             //Program.flagCloseFormVT = false; //Bật cờ lên để chặn tắt Form đột ngột khi nhập liệu
             txtSLT.Text = "0";
@@ -116,8 +116,7 @@ namespace QLVT
                 txtSLT.Focus();
                 return;
             }
-            
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MAVT N'" + txtMaVT.Text + "'";
+            String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaVT.Text + "',MAVT";
             Program.ExecSqlNonQuery(strLenh);
             if (Program.kt == 0)
             {
@@ -164,19 +163,23 @@ namespace QLVT
                     String strLenh = "EXECUTE dbo.SP_XOAVATTU N'" + mavt + "'";
 
                     int kq = Program.ExecSqlNonQuery(strLenh);
-                    if (kq == 1)
+                    if (kq == 0)
                     {
                         MessageBox.Show("Xóa vật tư thành công");
                     }
+                    bdsVT.RemoveCurrent();
                     Program.myReader.Close();
                     Program.conn.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi Xóa vật tư \n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.vattuTableAdapter.Fill(this.DS_VT.Vattu);
                     return;
                 }
             }
+            if (bdsVT.Count == 0) btnXoa.Enabled = false;
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

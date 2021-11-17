@@ -181,7 +181,7 @@ namespace QLVT
                 txtMaCN.Focus();
                 return;
             }
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MAKHO N'" + txtMaKho.Text + "'";
+            String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
             Program.ExecSqlNonQuery(strLenh);
             if (Program.kt == 0)
             {
@@ -206,7 +206,6 @@ namespace QLVT
             }
             else
             {
-                // them mà trùng thì ko vô được trường hợp này.
                 MessageBox.Show("Lỗi ghi kho\n Mã kho đã tồn tại!!!", "", MessageBoxButtons.OK);
                 return;
             }
@@ -228,19 +227,23 @@ namespace QLVT
                     String strLenh = "EXECUTE dbo.SP_XOAKHO N'" + makho + "'";
 
                     int kq = Program.ExecSqlNonQuery(strLenh);
-                    if (kq == 1)
+                    if (kq == 0)
                     {
                         MessageBox.Show("Xóa kho thành công");
                     }
+                    bdsKho.RemoveCurrent();
                     Program.myReader.Close();
                     Program.conn.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xóa kho \n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.khoTableAdapter.Fill(this.DS_Kho.Kho);
                     return;
                 }
             }
+            if (bdsKho.Count == 0) btnXoa.Enabled = false;
         }
     }
 }

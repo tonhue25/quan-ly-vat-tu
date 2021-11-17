@@ -37,8 +37,8 @@ namespace QLVT
 
             // them moi thi chi cho luu va undo thoi.
             // tat luoi
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled= btn_InDSNV.Enabled = btnThoat.Enabled = false;
-            btnGhi.Enabled = btnUndo.Enabled = true;
+            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled= btn_InDSNV.Enabled = false;
+            btnGhi.Enabled = btnUndo.Enabled  = btnThoat.Enabled = true;
             gcNhanVien.Enabled = false;
         }
 
@@ -82,10 +82,9 @@ namespace QLVT
             }
             else
             {
-                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',N'MANV'";
-                Program.ExecuteScalar(strLenh);
-                // == 2 la da ton tai o chi nhanh khac.
-                if (Program.kt != 2)
+                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',MAVT";
+                Program.ExecSqlNonQuery(strLenh);
+                if (Program.kt == 0)
                 {
                     try
                     {
@@ -153,7 +152,6 @@ namespace QLVT
                     undolist.Push(NV_info);
                     undolist.Push("DELETE");
 
-
                     Program.mlogin = Program.remotelogin;
                     Program.password = Program.remotepassword;
                     if (Program.KetNoi() == 0)
@@ -181,7 +179,6 @@ namespace QLVT
                         MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
 
                     this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);
-
                 }
                 catch (Exception ex)
                 {
