@@ -40,7 +40,6 @@ namespace QLVT
             this.bdsCTPN = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DH = new QLVT.DS_DH();
             this.txtMaVT = new System.Windows.Forms.TextBox();
-            this.txtSL = new DevExpress.XtraEditors.SpinEdit();
             this.txtMaPN = new System.Windows.Forms.TextBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gcCTDDH = new DevExpress.XtraGrid.GridControl();
@@ -53,6 +52,7 @@ namespace QLVT
             this.cTDDHTableAdapter = new QLVT.DS_DHTableAdapters.CTDDHTableAdapter();
             this.tableAdapterManager = new QLVT.DS_DHTableAdapters.TableAdapterManager();
             this.cTPNTableAdapter = new QLVT.DS_DHTableAdapters.CTPNTableAdapter();
+            this.txtSL = new System.Windows.Forms.TextBox();
             mAPNLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
@@ -61,7 +61,6 @@ namespace QLVT
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCTDDH)).BeginInit();
@@ -107,19 +106,19 @@ namespace QLVT
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.txtSL);
             this.panelControl1.Controls.Add(this.btnThem);
             this.panelControl1.Controls.Add(dONGIALabel);
             this.panelControl1.Controls.Add(this.txtDonGia);
             this.panelControl1.Controls.Add(mAVTLabel);
             this.panelControl1.Controls.Add(this.txtMaVT);
             this.panelControl1.Controls.Add(sOLUONGLabel);
-            this.panelControl1.Controls.Add(this.txtSL);
             this.panelControl1.Controls.Add(mAPNLabel);
             this.panelControl1.Controls.Add(this.txtMaPN);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(254, 251);
+            this.panelControl1.Size = new System.Drawing.Size(288, 251);
             this.panelControl1.TabIndex = 0;
             // 
             // btnThem
@@ -158,21 +157,6 @@ namespace QLVT
             this.txtMaVT.Size = new System.Drawing.Size(133, 21);
             this.txtMaVT.TabIndex = 5;
             // 
-            // txtSL
-            // 
-            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCTPN, "SOLUONG", true));
-            this.txtSL.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtSL.Location = new System.Drawing.Point(91, 109);
-            this.txtSL.Name = "txtSL";
-            this.txtSL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtSL.Size = new System.Drawing.Size(100, 20);
-            this.txtSL.TabIndex = 3;
-            // 
             // txtMaPN
             // 
             this.txtMaPN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPN, "MAPN", true));
@@ -185,9 +169,9 @@ namespace QLVT
             // 
             this.panelControl2.Controls.Add(this.gcCTDDH);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(254, 0);
+            this.panelControl2.Location = new System.Drawing.Point(288, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(450, 251);
+            this.panelControl2.Size = new System.Drawing.Size(416, 251);
             this.panelControl2.TabIndex = 1;
             // 
             // gcCTDDH
@@ -197,7 +181,7 @@ namespace QLVT
             this.gcCTDDH.Location = new System.Drawing.Point(2, 2);
             this.gcCTDDH.MainView = this.gridView1;
             this.gcCTDDH.Name = "gcCTDDH";
-            this.gcCTDDH.Size = new System.Drawing.Size(446, 247);
+            this.gcCTDDH.Size = new System.Drawing.Size(412, 247);
             this.gcCTDDH.TabIndex = 0;
             this.gcCTDDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -270,6 +254,14 @@ namespace QLVT
             // 
             this.cTPNTableAdapter.ClearBeforeFill = true;
             // 
+            // txtSL
+            // 
+            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPN, "SOLUONG", true));
+            this.txtSL.Location = new System.Drawing.Point(91, 109);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(131, 21);
+            this.txtSL.TabIndex = 9;
+            // 
             // subformChiTietPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,7 +279,6 @@ namespace QLVT
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCTDDH)).EndInit();
@@ -311,12 +302,12 @@ namespace QLVT
         private System.Windows.Forms.BindingSource bdsCTPN;
         private System.Windows.Forms.TextBox txtDonGia;
         private System.Windows.Forms.TextBox txtMaVT;
-        private DevExpress.XtraEditors.SpinEdit txtSL;
         private System.Windows.Forms.TextBox txtMaPN;
         private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
         private DevExpress.XtraGrid.Columns.GridColumn colDONGIA;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtSL;
     }
 }

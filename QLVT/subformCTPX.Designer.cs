@@ -38,7 +38,6 @@ namespace QLVT
             this.txtDonGia = new System.Windows.Forms.TextBox();
             this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DH = new QLVT.DS_DH();
-            this.txtSL = new DevExpress.XtraEditors.SpinEdit();
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaPX = new System.Windows.Forms.TextBox();
             this.btn_ghi = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@ namespace QLVT
             this.vattuTableAdapter = new QLVT.DS_DHTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new QLVT.DS_DHTableAdapters.TableAdapterManager();
             this.cTPXTableAdapter = new QLVT.DS_DHTableAdapters.CTPXTableAdapter();
+            this.txtSL = new System.Windows.Forms.TextBox();
             mAPXLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -61,7 +61,6 @@ namespace QLVT
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcVT)).BeginInit();
@@ -107,10 +106,10 @@ namespace QLVT
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.txtSL);
             this.panelControl1.Controls.Add(dONGIALabel);
             this.panelControl1.Controls.Add(this.txtDonGia);
             this.panelControl1.Controls.Add(sOLUONGLabel);
-            this.panelControl1.Controls.Add(this.txtSL);
             this.panelControl1.Controls.Add(mAVTLabel);
             this.panelControl1.Controls.Add(this.txtMaVT);
             this.panelControl1.Controls.Add(mAPXLabel);
@@ -119,7 +118,7 @@ namespace QLVT
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(242, 300);
+            this.panelControl1.Size = new System.Drawing.Size(288, 300);
             this.panelControl1.TabIndex = 0;
             // 
             // txtDonGia
@@ -139,21 +138,6 @@ namespace QLVT
             // 
             this.dS_DH.DataSetName = "DS_DH";
             this.dS_DH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // txtSL
-            // 
-            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCTPX, "SOLUONG", true));
-            this.txtSL.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtSL.Location = new System.Drawing.Point(97, 106);
-            this.txtSL.Name = "txtSL";
-            this.txtSL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtSL.Size = new System.Drawing.Size(100, 20);
-            this.txtSL.TabIndex = 11;
             // 
             // txtMaVT
             // 
@@ -185,9 +169,9 @@ namespace QLVT
             // 
             this.panelControl2.Controls.Add(this.gcVT);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(242, 0);
+            this.panelControl2.Location = new System.Drawing.Point(288, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(426, 300);
+            this.panelControl2.Size = new System.Drawing.Size(380, 300);
             this.panelControl2.TabIndex = 1;
             // 
             // gcVT
@@ -197,7 +181,7 @@ namespace QLVT
             this.gcVT.Location = new System.Drawing.Point(2, 2);
             this.gcVT.MainView = this.gridView1;
             this.gcVT.Name = "gcVT";
-            this.gcVT.Size = new System.Drawing.Size(422, 296);
+            this.gcVT.Size = new System.Drawing.Size(376, 296);
             this.gcVT.TabIndex = 0;
             this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -269,6 +253,14 @@ namespace QLVT
             // 
             this.cTPXTableAdapter.ClearBeforeFill = true;
             // 
+            // txtSL
+            // 
+            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "SOLUONG", true));
+            this.txtSL.Location = new System.Drawing.Point(97, 106);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(100, 21);
+            this.txtSL.TabIndex = 13;
+            // 
             // subformCTPX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,7 +278,6 @@ namespace QLVT
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcVT)).EndInit();
@@ -310,12 +301,12 @@ namespace QLVT
         private DS_DHTableAdapters.CTPXTableAdapter cTPXTableAdapter;
         private System.Windows.Forms.BindingSource bdsCTPX;
         private System.Windows.Forms.TextBox txtDonGia;
-        private DevExpress.XtraEditors.SpinEdit txtSL;
         private System.Windows.Forms.TextBox txtMaVT;
         private System.Windows.Forms.TextBox txtMaPX;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
         private DevExpress.XtraGrid.Columns.GridColumn colDVT;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONGTON;
+        private System.Windows.Forms.TextBox txtSL;
     }
 }

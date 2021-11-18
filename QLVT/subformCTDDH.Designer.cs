@@ -40,7 +40,6 @@ namespace QLVT
             this.txtDonGia = new System.Windows.Forms.TextBox();
             this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DH = new QLVT.DS_DH();
-            this.txtSL = new DevExpress.XtraEditors.SpinEdit();
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaDDH = new System.Windows.Forms.TextBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -54,6 +53,7 @@ namespace QLVT
             this.vattuTableAdapter = new QLVT.DS_DHTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new QLVT.DS_DHTableAdapters.TableAdapterManager();
             this.cTDDHTableAdapter = new QLVT.DS_DHTableAdapters.CTDDHTableAdapter();
+            this.txtSL = new System.Windows.Forms.TextBox();
             masoDDHLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -62,7 +62,6 @@ namespace QLVT
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).BeginInit();
@@ -108,11 +107,11 @@ namespace QLVT
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.txtSL);
             this.panelControl1.Controls.Add(this.btn_Ghi);
             this.panelControl1.Controls.Add(dONGIALabel);
             this.panelControl1.Controls.Add(this.txtDonGia);
             this.panelControl1.Controls.Add(sOLUONGLabel);
-            this.panelControl1.Controls.Add(this.txtSL);
             this.panelControl1.Controls.Add(mAVTLabel);
             this.panelControl1.Controls.Add(this.txtMaVT);
             this.panelControl1.Controls.Add(masoDDHLabel);
@@ -120,7 +119,7 @@ namespace QLVT
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(295, 270);
+            this.panelControl1.Size = new System.Drawing.Size(297, 270);
             this.panelControl1.TabIndex = 0;
             // 
             // btn_Ghi
@@ -151,25 +150,6 @@ namespace QLVT
             this.dS_DH.DataSetName = "DS_DH";
             this.dS_DH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // txtSL
-            // 
-            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsCTDDH, "SOLUONG", true));
-            this.txtSL.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtSL.Location = new System.Drawing.Point(102, 140);
-            this.txtSL.Name = "txtSL";
-            this.txtSL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtSL.Properties.DisplayFormat.FormatString = "n0";
-            this.txtSL.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtSL.Properties.EditFormat.FormatString = "n0";
-            this.txtSL.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtSL.Size = new System.Drawing.Size(68, 20);
-            this.txtSL.TabIndex = 5;
-            // 
             // txtMaVT
             // 
             this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTDDH, "MAVT", true));
@@ -192,9 +172,9 @@ namespace QLVT
             // 
             this.panelControl2.Controls.Add(this.vattuGridControl);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(295, 0);
+            this.panelControl2.Location = new System.Drawing.Point(297, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(363, 270);
+            this.panelControl2.Size = new System.Drawing.Size(361, 270);
             this.panelControl2.TabIndex = 1;
             // 
             // vattuGridControl
@@ -207,7 +187,7 @@ namespace QLVT
             this.vattuGridControl.Location = new System.Drawing.Point(2, 2);
             this.vattuGridControl.MainView = this.gridView1;
             this.vattuGridControl.Name = "vattuGridControl";
-            this.vattuGridControl.Size = new System.Drawing.Size(359, 266);
+            this.vattuGridControl.Size = new System.Drawing.Size(357, 266);
             this.vattuGridControl.TabIndex = 0;
             this.vattuGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -279,6 +259,14 @@ namespace QLVT
             // 
             this.cTDDHTableAdapter.ClearBeforeFill = true;
             // 
+            // txtSL
+            // 
+            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTDDH, "SOLUONG", true));
+            this.txtSL.Location = new System.Drawing.Point(102, 140);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(127, 21);
+            this.txtSL.TabIndex = 9;
+            // 
             // subformCTDDH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,7 +284,6 @@ namespace QLVT
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vattuGridControl)).EndInit();
@@ -319,7 +306,6 @@ namespace QLVT
         private DS_DHTableAdapters.CTDDHTableAdapter cTDDHTableAdapter;
         private System.Windows.Forms.BindingSource bdsCTDDH;
         private System.Windows.Forms.TextBox txtDonGia;
-        private DevExpress.XtraEditors.SpinEdit txtSL;
         private System.Windows.Forms.TextBox txtMaVT;
         private System.Windows.Forms.TextBox txtMaDDH;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
@@ -327,5 +313,6 @@ namespace QLVT
         private DevExpress.XtraGrid.Columns.GridColumn colDVT;
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONGTON;
         private System.Windows.Forms.Button btn_Ghi;
+        private System.Windows.Forms.TextBox txtSL;
     }
 }

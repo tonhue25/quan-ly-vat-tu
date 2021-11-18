@@ -120,7 +120,7 @@ namespace QLVT
             // mAPNLabel
             // 
             mAPNLabel.AutoSize = true;
-            mAPNLabel.Location = new System.Drawing.Point(41, 38);
+            mAPNLabel.Location = new System.Drawing.Point(22, 42);
             mAPNLabel.Name = "mAPNLabel";
             mAPNLabel.Size = new System.Drawing.Size(44, 13);
             mAPNLabel.TabIndex = 0;
@@ -129,7 +129,7 @@ namespace QLVT
             // nGAYLabel
             // 
             nGAYLabel.AutoSize = true;
-            nGAYLabel.Location = new System.Drawing.Point(41, 74);
+            nGAYLabel.Location = new System.Drawing.Point(22, 78);
             nGAYLabel.Name = "nGAYLabel";
             nGAYLabel.Size = new System.Drawing.Size(39, 13);
             nGAYLabel.TabIndex = 2;
@@ -138,7 +138,7 @@ namespace QLVT
             // mAKHOLabel
             // 
             mAKHOLabel.AutoSize = true;
-            mAKHOLabel.Location = new System.Drawing.Point(41, 117);
+            mAKHOLabel.Location = new System.Drawing.Point(22, 121);
             mAKHOLabel.Name = "mAKHOLabel";
             mAKHOLabel.Size = new System.Drawing.Size(48, 13);
             mAKHOLabel.TabIndex = 6;
@@ -521,7 +521,6 @@ namespace QLVT
             // 
             // pnNhap
             // 
-            this.pnNhap.Controls.Add(this.btn_ThemCTPN);
             this.pnNhap.Controls.Add(mAKHOLabel);
             this.pnNhap.Controls.Add(this.txtMaKho);
             this.pnNhap.Controls.Add(nGAYLabel);
@@ -531,12 +530,12 @@ namespace QLVT
             this.pnNhap.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnNhap.Location = new System.Drawing.Point(0, 276);
             this.pnNhap.Name = "pnNhap";
-            this.pnNhap.Size = new System.Drawing.Size(304, 216);
+            this.pnNhap.Size = new System.Drawing.Size(244, 216);
             this.pnNhap.TabIndex = 13;
             // 
             // btn_ThemCTPN
             // 
-            this.btn_ThemCTPN.Location = new System.Drawing.Point(96, 188);
+            this.btn_ThemCTPN.Location = new System.Drawing.Point(320, 174);
             this.btn_ThemCTPN.Name = "btn_ThemCTPN";
             this.btn_ThemCTPN.Size = new System.Drawing.Size(75, 23);
             this.btn_ThemCTPN.TabIndex = 8;
@@ -547,7 +546,7 @@ namespace QLVT
             // txtMaKho
             // 
             this.txtMaKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPN, "MAKHO", true));
-            this.txtMaKho.Location = new System.Drawing.Point(113, 117);
+            this.txtMaKho.Location = new System.Drawing.Point(94, 121);
             this.txtMaKho.Name = "txtMaKho";
             this.txtMaKho.Size = new System.Drawing.Size(121, 21);
             this.txtMaKho.TabIndex = 7;
@@ -556,7 +555,7 @@ namespace QLVT
             // 
             this.dptNgay.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "NGAY", true));
             this.dptNgay.EditValue = null;
-            this.dptNgay.Location = new System.Drawing.Point(113, 71);
+            this.dptNgay.Location = new System.Drawing.Point(94, 75);
             this.dptNgay.MenuManager = this.barManager1;
             this.dptNgay.Name = "dptNgay";
             this.dptNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -569,29 +568,30 @@ namespace QLVT
             // txtMaPN
             // 
             this.txtMaPN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPN, "MAPN", true));
-            this.txtMaPN.Location = new System.Drawing.Point(113, 30);
+            this.txtMaPN.Location = new System.Drawing.Point(94, 34);
             this.txtMaPN.Name = "txtMaPN";
             this.txtMaPN.Size = new System.Drawing.Size(121, 21);
             this.txtMaPN.TabIndex = 1;
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.btn_ThemCTPN);
             this.panelControl4.Controls.Add(this.gcCTPN);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(304, 276);
+            this.panelControl4.Location = new System.Drawing.Point(244, 276);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(793, 216);
+            this.panelControl4.Size = new System.Drawing.Size(853, 216);
             this.panelControl4.TabIndex = 14;
             // 
             // gcCTPN
             // 
             this.gcCTPN.DataSource = this.bdsCTPN;
-            this.gcCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcCTPN.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcCTPN.Location = new System.Drawing.Point(2, 2);
             this.gcCTPN.MainView = this.gridView3;
             this.gcCTPN.MenuManager = this.barManager1;
             this.gcCTPN.Name = "gcCTPN";
-            this.gcCTPN.Size = new System.Drawing.Size(789, 212);
+            this.gcCTPN.Size = new System.Drawing.Size(849, 166);
             this.gcCTPN.TabIndex = 0;
             this.gcCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});

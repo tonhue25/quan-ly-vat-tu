@@ -57,9 +57,15 @@ namespace QLVT
                 txtSL.Focus();
                 return;
             }
-            if (int.Parse(txtSL.Text.Trim())>0)
+            if (int.Parse(txtSL.Text.Trim())<=0)
             {
                 MessageBox.Show("Số lượng > 0", "", MessageBoxButtons.OK);
+                txtSL.Focus();
+                return;
+            }
+            if (int.Parse(txtSL.Text.Trim()) > int.Parse(getDataRow(bdsCTDDH, "SOLUONG")))
+            {
+                MessageBox.Show("Không được nhập quá số lượng đặt", "", MessageBoxButtons.OK);
                 txtSL.Focus();
                 return;
             }
@@ -69,7 +75,7 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
-            if (float.Parse(txtDonGia.Text.Trim())>=0)
+            if (float.Parse(txtDonGia.Text.Trim())<0)
             {
                 MessageBox.Show("Đơn giá >= 0", "", MessageBoxButtons.OK);
                 txtDonGia.Focus();

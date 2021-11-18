@@ -49,7 +49,7 @@ namespace QLVT
                 txtSL.Focus();
                 return;
             }
-            if (int.Parse(txtSL.Text.Trim())>0)
+            if (int.Parse(txtSL.Text.Trim())<=0)
             {
                 MessageBox.Show("Số lượng > 0 ", "", MessageBoxButtons.OK);
                 txtSL.Focus();
@@ -61,7 +61,7 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
-            if (float.Parse(txtDonGia.Text.Trim()) >= 0)
+            if (float.Parse(txtDonGia.Text.Trim()) < 0)
             {
                 MessageBox.Show("Đơn giá >= 0", "", MessageBoxButtons.OK);
                 txtDonGia.Focus();
@@ -104,7 +104,7 @@ namespace QLVT
             this.bdsCTPX.AddNew();
             txtMaPX.Text = Program.maPX;
             txtMaVT.Text = getDataRow(bdsVT, "MAVT");
-            txtSL.Value = 1;
+            txtSL.Text = "1";
         }
         private string getDataRow(BindingSource bindingSource, string column)
         {
