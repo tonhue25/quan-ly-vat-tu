@@ -67,6 +67,13 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
+            if (int.Parse(txtSL.Text.Trim()) > int.Parse(getDataRow(bdsVT, "SOLUONGTON")))
+            {
+                // sl xuất phải <= số lượng tồn tại trong kho
+                MessageBox.Show("Số lượng vật tư xuất <= số lượng vật tư trong kho!!! ", "", MessageBoxButtons.OK);
+                txtSL.Focus();
+                return;
+            }
             else
             {
                 String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPX.Text + "'," + txtMaVT.Text + ",MACTPX";
@@ -75,6 +82,9 @@ namespace QLVT
                 {
                     try
                     {
+                        string maVT = txtMaVT.Text;
+                        int soLuong = int.Parse(txtSL.Text.ToString());
+
                         bdsCTPX.EndEdit(); //ghi vào data set
                         bdsCTPX.ResetCurrentItem();
 
@@ -82,6 +92,13 @@ namespace QLVT
                         this.cTPXTableAdapter.Update(this.dS_DH.CTPX);
 
                         MessageBox.Show("Thêm chi tiết phiếu xuất " + Program.maPX + "thành công !!!");
+
+                        String strLenh2 = "EXECUTE dbo.SP_UpdateSLVatTu N'" + maVT + "'," + soLuong + ",EXPORT";
+                        int kt2 = Program.ExecuteScalar(strLenh2);
+                        if (kt2 == 1)
+                        {
+                            MessageBox.Show("Cập nhập số lượng vật tư thành công !!!");
+                        }
                     }
                     catch (Exception ex)
                     {
