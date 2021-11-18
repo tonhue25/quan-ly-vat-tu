@@ -49,36 +49,51 @@ namespace QLVT
                 txtSL.Focus();
                 return;
             }
+            if (int.Parse(txtSL.Text.Trim())>0)
+            {
+                MessageBox.Show("Số lượng > 0 ", "", MessageBoxButtons.OK);
+                txtSL.Focus();
+                return;
+            }
             if (txtDonGia.Text.Trim() == "")
             {
                 MessageBox.Show("Đơn giá không được để trống", "", MessageBoxButtons.OK);
                 txtDonGia.Focus();
                 return;
             }
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPX.Text + "'," + txtMaVT.Text + ",MACTPX";
-            int kt = Program.ExecuteScalar(strLenh);
-            if (kt == 0)
+            if (float.Parse(txtDonGia.Text.Trim()) >= 0)
             {
-                try
-                {
-                    bdsCTPX.EndEdit(); //ghi vào data set
-                    bdsCTPX.ResetCurrentItem();
-
-                    this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.cTPXTableAdapter.Update(this.dS_DH.CTPX); 
-
-                    MessageBox.Show("Thêm chi tiết phiếu xuất " + Program.maPX +"thành công !!!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi chi tiết phiếu xuất " + Program.maPX + "\n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
+                MessageBox.Show("Đơn giá >= 0", "", MessageBoxButtons.OK);
+                txtDonGia.Focus();
+                return;
             }
             else
             {
-                MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng " + Program.maDDH + "\n Mã phiếu xuất và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
-                return;
+                String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPX.Text + "'," + txtMaVT.Text + ",MACTPX";
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
+                {
+                    try
+                    {
+                        bdsCTPX.EndEdit(); //ghi vào data set
+                        bdsCTPX.ResetCurrentItem();
+
+                        this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.cTPXTableAdapter.Update(this.dS_DH.CTPX);
+
+                        MessageBox.Show("Thêm chi tiết phiếu xuất " + Program.maPX + "thành công !!!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi chi tiết phiếu xuất " + Program.maPX + "\n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng " + Program.maDDH + "\n Mã phiếu xuất và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
+                    return;
+                }
             }
         }
 

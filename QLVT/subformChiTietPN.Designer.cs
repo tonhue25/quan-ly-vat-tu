@@ -74,27 +74,27 @@ namespace QLVT
             mAPNLabel.AutoSize = true;
             mAPNLabel.Location = new System.Drawing.Point(21, 43);
             mAPNLabel.Name = "mAPNLabel";
-            mAPNLabel.Size = new System.Drawing.Size(39, 13);
+            mAPNLabel.Size = new System.Drawing.Size(44, 13);
             mAPNLabel.TabIndex = 0;
-            mAPNLabel.Text = "MAPN:";
+            mAPNLabel.Text = "Mã PN :";
             // 
             // sOLUONGLabel
             // 
             sOLUONGLabel.AutoSize = true;
             sOLUONGLabel.Location = new System.Drawing.Point(21, 112);
             sOLUONGLabel.Name = "sOLUONGLabel";
-            sOLUONGLabel.Size = new System.Drawing.Size(59, 13);
+            sOLUONGLabel.Size = new System.Drawing.Size(56, 13);
             sOLUONGLabel.TabIndex = 2;
-            sOLUONGLabel.Text = "SOLUONG:";
+            sOLUONGLabel.Text = "Số lượng :";
             // 
             // mAVTLabel
             // 
             mAVTLabel.AutoSize = true;
             mAVTLabel.Location = new System.Drawing.Point(21, 79);
             mAVTLabel.Name = "mAVTLabel";
-            mAVTLabel.Size = new System.Drawing.Size(38, 13);
+            mAVTLabel.Size = new System.Drawing.Size(43, 13);
             mAVTLabel.TabIndex = 4;
-            mAVTLabel.Text = "MAVT:";
+            mAVTLabel.Text = "Mã VT :";
             // 
             // dONGIALabel
             // 
@@ -103,7 +103,7 @@ namespace QLVT
             dONGIALabel.Name = "dONGIALabel";
             dONGIALabel.Size = new System.Drawing.Size(51, 13);
             dONGIALabel.TabIndex = 6;
-            dONGIALabel.Text = "DONGIA:";
+            dONGIALabel.Text = "Đơn giá :";
             // 
             // panelControl1
             // 

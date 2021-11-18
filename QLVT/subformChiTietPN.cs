@@ -57,36 +57,51 @@ namespace QLVT
                 txtSL.Focus();
                 return;
             }
+            if (int.Parse(txtSL.Text.Trim())>0)
+            {
+                MessageBox.Show("Số lượng > 0", "", MessageBoxButtons.OK);
+                txtSL.Focus();
+                return;
+            }
             if (txtDonGia.Text.Trim() == "")
             {
                 MessageBox.Show("Đơn giá không được để trống", "", MessageBoxButtons.OK);
                 txtDonGia.Focus();
                 return;
             }
-            String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPN.Text + "'," + txtMaVT.Text + ",MACTPN";
-            int kt = Program.ExecuteScalar(strLenh);
-            if (kt == 0)
+            if (float.Parse(txtDonGia.Text.Trim())>=0)
             {
-                try
-                {
-                    bdsCTPN.EndEdit();
-                    bdsCTPN.ResetCurrentItem();
-
-                    this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.cTPNTableAdapter.Update(this.dS_DH.CTPN); 
-
-                    MessageBox.Show("Thêm chi tiết phiếu nhập " + Program.maPN + " thành công !!!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi chi tiết phiếu nhập " + Program.maPN + "\n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
+                MessageBox.Show("Đơn giá >= 0", "", MessageBoxButtons.OK);
+                txtDonGia.Focus();
+                return;
             }
             else
             {
-                MessageBox.Show("Lỗi ghi chi tiết phiếu nhập " + Program.maDDH + "\n Mã phiếu nhập và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
-                return;
+                String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPN.Text + "'," + txtMaVT.Text + ",MACTPN";
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
+                {
+                    try
+                    {
+                        bdsCTPN.EndEdit();
+                        bdsCTPN.ResetCurrentItem();
+
+                        this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
+                        this.cTPNTableAdapter.Update(this.dS_DH.CTPN);
+
+                        MessageBox.Show("Thêm chi tiết phiếu nhập " + Program.maPN + " thành công !!!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi ghi chi tiết phiếu nhập " + Program.maPN + "\n" + ex.Message, "", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi ghi chi tiết phiếu nhập " + Program.maDDH + "\n Mã phiếu nhập và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
+                    return;
+                }
             }
         }
 
