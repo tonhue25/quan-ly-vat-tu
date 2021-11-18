@@ -135,9 +135,6 @@ namespace QLVT
             }
             catch (SqlException ex)
             {
-                if (ex.Message.Contains("Error converting data type varchar to int"))
-                    MessageBox.Show("Bạn format cell lại cột \"Ngày Thi\" qua kiểu Number hoặc mở File Excell.");
-                else MessageBox.Show(ex.Message);
                 conn.Close();
                 return ex.State;
             }

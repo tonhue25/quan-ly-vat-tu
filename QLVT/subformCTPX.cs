@@ -55,10 +55,10 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
-            /*String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPX.Text + "'," + txtMaVT.Text + ",MAPX";
+            String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaPX.Text + "'," + txtMaVT.Text + ",MACTPX";
             int kt = Program.ExecuteScalar(strLenh);
             if (kt == 0)
-            {*/
+            {
                 try
                 {
                     bdsCTPX.EndEdit(); //ghi vào data set
@@ -74,12 +74,12 @@ namespace QLVT
                     MessageBox.Show("Lỗi ghi chi tiết phiếu xuất " + Program.maPX + "\n" + ex.Message, "", MessageBoxButtons.OK);
                     return;
                 }
-            /*}
+            }
             else
             {
-                MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng " + Program.maDDH + "\n Mã đơn hàng và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi ghi chi tiết đơn đặt hàng " + Program.maDDH + "\n Mã phiếu xuất và mã vật tư đã tồn tại", "", MessageBoxButtons.OK);
                 return;
-            }*/
+            }
         }
 
         private void subformCTPX_Shown(object sender, EventArgs e)
