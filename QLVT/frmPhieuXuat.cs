@@ -249,5 +249,18 @@ namespace QLVT
             }
             if (bdsPX.Count == 0) btnXoa.Enabled = false;
         }
+
+        private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // them => bo them.
+            // sua => bo sua.
+            bdsPX.CancelEdit();
+            // luc nay them roi, thi lay vi tri do luu lai
+            if (btnThem.Enabled == false) bdsPX.Position = vitri;
+            gcPX.Enabled = true;
+            pnNhap.Enabled = false;
+            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+            btnGhi.Enabled = btnUndo.Enabled = false;
+        }
     }
 }

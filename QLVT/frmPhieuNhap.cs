@@ -252,5 +252,18 @@ namespace QLVT
             Program.maPN = txtMaPN.Text;
             Program.maDDH = getDataRow(bdsDH, "MasoDDH");
         }
+
+        private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // them => bo them.
+            // sua => bo sua.
+            bdsPN.CancelEdit();
+            // luc nay them roi, thi lay vi tri do luu lai
+            if (btnThem.Enabled == false) bdsPN.Position = vitri;
+            gcPN.Enabled = true;
+            pnNhap.Enabled = false;
+            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+            btnGhi.Enabled = btnUndo.Enabled = false;
+        }
     }
 }
