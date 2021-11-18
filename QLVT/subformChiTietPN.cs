@@ -89,13 +89,23 @@ namespace QLVT
                 {
                     try
                     {
+                        string maVT = txtMaVT.Text;
+                        int soLuong = int.Parse(txtSL.Text.ToString());
+
                         bdsCTPN.EndEdit();
                         bdsCTPN.ResetCurrentItem();
 
                         this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.cTPNTableAdapter.Update(this.dS_DH.CTPN);
 
-                        MessageBox.Show("Thêm chi tiết phiếu nhập " + Program.maPN + " thành công !!!");
+                        MessageBox.Show("Thêm chi tiết phiếu nhập " + Program.maPN + "thành công !!!");
+                        // thêm phiếu nhập thì cần update số lượng.
+                        String strLenh2 = "EXECUTE dbo.SP_UpdateSLVatTu N'" + maVT + "'," + soLuong + ",IMPORT";
+                        int kt2 = Program.ExecuteScalar(strLenh2);
+                        if (kt2 == 1)
+                        {
+                            MessageBox.Show("Cập nhập số lượng vật tư thành công !!!");
+                        }
                     }
                     catch (Exception ex)
                     {
