@@ -233,7 +233,7 @@ namespace QLVT
             this.Controls.Add(this.cmbChiNhanh);
             this.Controls.Add(this.label1);
             this.Name = "frmTaoTaiKhoan";
-            this.Text = "frmTaoTaiKhoan";
+            this.Text = "Tạo tài khoản";
             this.Load += new System.EventHandler(this.frmTaoTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSNVChuaTaoLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNVChuaTaoLogin)).EndInit();

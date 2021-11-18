@@ -117,23 +117,25 @@ namespace QLVT
                 txtPass.Focus();
                 return;
             }
-            String type = (rbCN.Checked) ? "CHINHANH" : "USER";
-            String loginName = txtTK.Text;
-            String pass = txtPass.Text;
-            String tenNV = cmbHoTen.Text;
-            String strLenh = "EXECUTE dbo.SP_TAOLOGIN " +loginName+ ","+pass+","+manv+","+type;
-            int kt = Program.ExecuteScalar(strLenh);
-            if (kt == 0)
+            else
             {
-                MessageBox.Show("Tạo tài khoản thành công!!!");
-            }
-            else if (kt == 1)
-            {
-                MessageBox.Show("Login name bị trùng!!!");
-            }
-            else if (kt == 2)
-            {
-                MessageBox.Show("Username bị trùng!!!");
+                String type = (rbCN.Checked) ? "CHINHANH" : "USER";
+                String loginName = txtTK.Text;
+                String pass = txtPass.Text;
+                String strLenh = "EXECUTE dbo.SP_TAOLOGIN " + loginName + "," + pass + "," + manv + "," + type;
+                int kt = Program.ExecuteScalar(strLenh);
+                if (kt == 0)
+                {
+                    MessageBox.Show("Tạo tài khoản thành công!!!");
+                }
+                else if (kt == 1)
+                {
+                    MessageBox.Show("Login name bị trùng!!!");
+                }
+                else if (kt == 2)
+                {
+                    MessageBox.Show("Username bị trùng!!!");
+                }
             }
         }
 
