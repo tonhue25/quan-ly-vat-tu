@@ -44,6 +44,7 @@ namespace QLVT
             this.btn_DHKhongCoPN = new DevExpress.XtraBars.BarButtonItem();
             this.btn_HDNV = new DevExpress.XtraBars.BarButtonItem();
             this.btn_TongHopNX = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rib_DanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -86,9 +87,10 @@ namespace QLVT
             this.btn_CTSLNX,
             this.btn_DHKhongCoPN,
             this.btn_HDNV,
-            this.btn_TongHopNX});
+            this.btn_TongHopNX,
+            this.barButtonItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 14;
+            this.ribbonControl1.MaxItemId = 15;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribHeThong,
@@ -108,6 +110,7 @@ namespace QLVT
             this.btn_TaoTK.Caption = "Tạo tài khoản";
             this.btn_TaoTK.Id = 2;
             this.btn_TaoTK.Name = "btn_TaoTK";
+            this.btn_TaoTK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_TaoTK_ItemClick);
             // 
             // btnThoat
             // 
@@ -185,6 +188,12 @@ namespace QLVT
             this.btn_TongHopNX.Id = 13;
             this.btn_TongHopNX.Name = "btn_TongHopNX";
             this.btn_TongHopNX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_TongHopNX_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Tạo tài khoản";
+            this.barButtonItem1.Id = 14;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // ribHeThong
             // 
@@ -362,6 +371,7 @@ namespace QLVT
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btn_TongHopNX;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
 

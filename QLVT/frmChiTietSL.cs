@@ -14,8 +14,6 @@ namespace QLVT
     public partial class frmChiTietSL : Form
     {
         String loaiPhieu = "";
-        String bd = "";
-        String kt = "";
         int loai = 0;
         String role = Program.mGroup;
         public frmChiTietSL()

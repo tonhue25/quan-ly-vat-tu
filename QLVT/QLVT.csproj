@@ -75,6 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_DH.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_DSNVChuaTaoLogin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_DSNVChuaTaoLogin.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS_Kho.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +129,12 @@
     </Compile>
     <Compile Include="frmNhanVien.designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaoTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaoTaiKhoan.Designer.cs">
+      <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTHNX.cs">
       <SubType>Form</SubType>
@@ -244,6 +255,9 @@
     <EmbeddedResource Include="frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTaoTaiKhoan.resx">
+      <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTHNX.resx">
       <DependentUpon>frmTHNX.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +330,17 @@
     </None>
     <None Include="DS_DH.xss">
       <DependentUpon>DS_DH.xsd</DependentUpon>
+    </None>
+    <None Include="DS_DSNVChuaTaoLogin.xsc">
+      <DependentUpon>DS_DSNVChuaTaoLogin.xsd</DependentUpon>
+    </None>
+    <None Include="DS_DSNVChuaTaoLogin.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_DSNVChuaTaoLogin.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_DSNVChuaTaoLogin.xss">
+      <DependentUpon>DS_DSNVChuaTaoLogin.xsd</DependentUpon>
     </None>
     <None Include="DS_Kho.xsc">
       <DependentUpon>DS_Kho.xsd</DependentUpon>
