@@ -217,7 +217,37 @@ namespace QLVT
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (bdsCTPX.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa phiếu vì đã đã lập chi tiết phiếu!!!", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thật sự muốn phiếu này", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    String mapn = ((DataRowView)bdsPX[bdsPX.Position])["MAPX"].ToString();
+                    if (Program.KetNoi() == 0) return;
+                    String strLenh = "EXECUTE dbo.SP_XOAPHIEUXUAT N'" + mapn + "'";
 
+                    int kq = Program.ExecSqlNonQuery(strLenh);
+                    if (kq == 0)
+                    {
+                        MessageBox.Show("Xóa phiếu thành công");
+                    }
+                    bdsPX.RemoveCurrent();
+                    Program.myReader.Close();
+                    Program.conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.phieuXuatTableAdapter.Fill(this.dS_DH.PhieuXuat);
+                    return;
+                }
+            }
+            if (bdsPX.Count == 0) btnXoa.Enabled = false;
         }
     }
 }

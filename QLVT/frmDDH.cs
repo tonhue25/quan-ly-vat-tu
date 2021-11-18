@@ -219,13 +219,37 @@ namespace QLVT
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // dơn đặt hàng này đã có chi tiết đơn đặthàng chưa, nếu chưa thì mới được xóa.
             if (bdsCTDDH.Count > 0)
             {
-                MessageBox.Show("Không thể xóa đơn hàng vì đã lập đơn!!!", "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể xóa đơn hàng vì đã lập CT!!!", "", MessageBoxButtons.OK);
                 return;
             }
-            // xoa thi de sau di.
+            if (MessageBox.Show("Bạn có thật sự muốn phiếu này", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    String mapn = ((DataRowView)bdsDH[bdsDH.Position])["MasoDDH"].ToString();
+                    if (Program.KetNoi() == 0) return;
+                    String strLenh = "EXECUTE dbo.SP_XOADDH N'" + mapn + "'";
+
+                    int kq = Program.ExecSqlNonQuery(strLenh);
+                    if (kq == 0)
+                    {
+                        MessageBox.Show("Xóa phiếu thành công");
+                    }
+                    bdsDH.RemoveCurrent();
+                    Program.myReader.Close();
+                    Program.conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.datHangTableAdapter.Fill(this.dS_DH.DatHang);
+                    return;
+                }
+            }
+            if (bdsDH.Count == 0) btnXoa.Enabled = false;
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
