@@ -77,7 +77,6 @@ namespace QLVT
             if (frm != null) frm.Activate();
             else
             {
-                // HIEN THI DUOC FORM NHAN VIEN ROI A
                 I f = new I();
                 f.MdiParent = this;
                 f.Show();

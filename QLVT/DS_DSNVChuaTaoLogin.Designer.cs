@@ -778,7 +778,7 @@ namespace QLVT.DS_DSNVChuaTaoLoginTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "\r\nSELECT  HO+\' \'+TEN AS HOTEN, MANV\tFROM NHANVIEN WHERE CONVERT(nvarchar, MANV)  " +
-                "NOT IN (SELECT name FROM sys.sysusers)";
+                "NOT IN (SELECT name FROM sys.sysusers) and (TrangThaiXoa = 0)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

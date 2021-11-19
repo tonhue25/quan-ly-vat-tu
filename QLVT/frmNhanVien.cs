@@ -88,6 +88,8 @@ namespace QLVT
             }
             else
             {
+                // khi thêm nhân viên thì chỉ thêm mà ko tạo thêm login, username gì hết, sau đó
+                // mới lấy nv chưa có login để tạo thêm login.
                 String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',MANV";
                 int kt = Program.ExecuteScalar(strLenh);
                 if (kt == 0)
@@ -125,7 +127,6 @@ namespace QLVT
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Int32 manv = 0;
             if (bdsDH.Count > 0)
             {
                 MessageBox.Show("Không thể xóa nhân viên vì đã nhân viên đã lập đơn đặt hàng!!!", "", MessageBoxButtons.OK);
@@ -150,49 +151,21 @@ namespace QLVT
             {
                 try
                 {
-                    String NV_info = txtMaNV.Text.Trim() + "#" + txtHo.Text.Trim() + "#" + txtTen.Text.Trim() + "#" + txtChiNhanh.Text.Trim() + "#" +
-                            dtpNgaySinh.Text + "#" + txtDiaChi.Text.Trim() + "#" + txtLuong.Text.Trim();
-                    Console.WriteLine(NV_info);
-                    manv = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString());
-                    bdsNV.RemoveCurrent();
-                    btnUndo.Enabled = true;
-                    undolist.Push(NV_info);
-                    undolist.Push("DELETE");
+                    int manv = int.Parse(txtMaNV.Text);
 
-                    Program.mlogin = Program.remotelogin;
-                    Program.password = Program.remotepassword;
-                    if (Program.KetNoi() == 0)
-                        MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                    if (Program.KetNoi() == 0) return;
+                    String strLenh = "EXECUTE dbo.Xoa_login N'" + manv + "'";
+                    Program.myReader = Program.ExecSqlDataReader(strLenh);
+                    if (Program.myReader == null) return;
+                    Program.myReader.Read();
+                    MessageBox.Show("Xóa nhân viên thành công!!!", " ", MessageBoxButtons.OK);
 
-
-                    Program.conn = new SqlConnection(Program.connstr);
-                    Program.conn.Open();
-                    SqlCommand cmd = new SqlCommand("Xoa_Login", Program.conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@USRNAME", manv));
-                    SqlDataReader myReader = null;
-                    try
-                    {
-                        myReader = cmd.ExecuteReader();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);
-                    Program.mlogin = Program.mloginDN;
-                    Program.password = Program.passwordDN;
-                    if (Program.KetNoi() == 0)
-                        MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-
-                    this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);
+                    Program.myReader.Close();
+                    Program.conn.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xảy ra trong quá trình xóa. Vui lòng thử lại!\n" + ex.Message, "Thông báo lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.nhanVienTableAdapter.Fill(this.DS_NhanVien.NhanVien);
-                    bdsNV.Position = bdsNV.Find("MANV", manv);
+                    MessageBox.Show("Lỗi Xóa nhân viên \n" + ex.Message, "", MessageBoxButtons.OK);
                     return;
                 }
             }
