@@ -107,7 +107,7 @@ namespace QLVT
                 this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.nhanVienTableAdapter.Fill(this.dS_DH.NhanVien);
 
-                macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
+                //macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
             }
         }
 

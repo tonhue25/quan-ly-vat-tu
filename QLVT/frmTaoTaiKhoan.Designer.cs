@@ -50,6 +50,7 @@ namespace QLVT
             this.rbU = new System.Windows.Forms.RadioButton();
             this.btn_TaoTK = new System.Windows.Forms.Button();
             this.btn_Huy = new System.Windows.Forms.Button();
+            this.rbCT = new System.Windows.Forms.RadioButton();
             hOTENLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSNVChuaTaoLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNVChuaTaoLogin)).BeginInit();
@@ -176,7 +177,7 @@ namespace QLVT
             // rbCN
             // 
             this.rbCN.AutoSize = true;
-            this.rbCN.Location = new System.Drawing.Point(66, 182);
+            this.rbCN.Location = new System.Drawing.Point(182, 181);
             this.rbCN.Name = "rbCN";
             this.rbCN.Size = new System.Drawing.Size(73, 17);
             this.rbCN.TabIndex = 10;
@@ -187,7 +188,7 @@ namespace QLVT
             // rbU
             // 
             this.rbU.AutoSize = true;
-            this.rbU.Location = new System.Drawing.Point(173, 182);
+            this.rbU.Location = new System.Drawing.Point(289, 181);
             this.rbU.Name = "rbU";
             this.rbU.Size = new System.Drawing.Size(47, 17);
             this.rbU.TabIndex = 11;
@@ -215,11 +216,23 @@ namespace QLVT
             this.btn_Huy.UseVisualStyleBackColor = true;
             this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
             // 
+            // rbCT
+            // 
+            this.rbCT.AutoSize = true;
+            this.rbCT.Location = new System.Drawing.Point(75, 181);
+            this.rbCT.Name = "rbCT";
+            this.rbCT.Size = new System.Drawing.Size(61, 17);
+            this.rbCT.TabIndex = 14;
+            this.rbCT.TabStop = true;
+            this.rbCT.Text = "Công ty";
+            this.rbCT.UseVisualStyleBackColor = true;
+            // 
             // frmTaoTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 275);
+            this.ClientSize = new System.Drawing.Size(397, 275);
+            this.Controls.Add(this.rbCT);
             this.Controls.Add(this.btn_Huy);
             this.Controls.Add(this.btn_TaoTK);
             this.Controls.Add(this.rbU);
@@ -265,5 +278,6 @@ namespace QLVT
         private System.Windows.Forms.RadioButton rbU;
         private System.Windows.Forms.Button btn_TaoTK;
         private System.Windows.Forms.Button btn_Huy;
+        private System.Windows.Forms.RadioButton rbCT;
     }
 }

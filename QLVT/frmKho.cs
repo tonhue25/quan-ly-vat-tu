@@ -104,7 +104,7 @@ namespace QLVT
                 this.chiNhanhTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.chiNhanhTableAdapter.Fill(this.DS_Kho.ChiNhanh);
 
-                macn = ((DataRowView)bdsKho[0])["MACN"].ToString();
+                //macn = ((DataRowView)bdsKho[0])["MACN"].ToString();
             }
         }
 

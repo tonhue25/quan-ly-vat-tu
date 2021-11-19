@@ -321,7 +321,7 @@ namespace QLVT
                 this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuXuatTableAdapter.Fill(this.DS_NhanVien.PhieuXuat);
 
-                macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
+                //macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
             }
         }
     }

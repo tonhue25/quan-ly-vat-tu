@@ -38,11 +38,24 @@ namespace QLVT
             cmbChiNhanh.SelectedIndex = Program.mChiNhanh;
             if (Program.mGroup == "CONGTY")
             {
+                // công ty được tạo login nhóm công ty
                 cmbChiNhanh.Enabled = true;
+                rbCT.Enabled = true;
+                rbCN.Enabled = rbU.Enabled = false;
             }
-            else
+            if (Program.mGroup == "CHINHANH")
             {
+                // chi nhánh được tạo login nhóm chi nhánh và user
+                rbCT.Enabled = false;
                 cmbChiNhanh.Enabled = false;
+                rbCN.Enabled = rbU.Enabled = true;
+            }
+            if (Program.mGroup == "USER")
+            {
+                // chi nhánh được tạo login nhóm chi nhánh và user
+                rbCT.Enabled = false;
+                cmbChiNhanh.Enabled = false;
+                rbCN.Enabled = rbU.Enabled = false;
             }
         }
 
@@ -111,7 +124,7 @@ namespace QLVT
                 txtPass.Focus();
                 return;
             }
-            if (rbCN.Checked != true && rbU.Checked != true)
+            if (rbCN.Checked != true && rbU.Checked != true && rbCT.Checked != true)
             {
                 MessageBox.Show("Chưa chọn nhóm quyền!!!", "", MessageBoxButtons.OK);
                 txtPass.Focus();
@@ -119,23 +132,49 @@ namespace QLVT
             }
             else
             {
-                String type = (rbCN.Checked) ? "CHINHANH" : "USER";
-                String loginName = txtTK.Text;
-                String pass = txtPass.Text;
-                String strLenh = "EXECUTE dbo.SP_TAOLOGIN " + loginName + "," + pass + "," + manv + "," + type;
-                int kt = Program.ExecuteScalar(strLenh);
-                if (kt == 0)
+                String type = "";
+                if (rbCT.Checked == true)
                 {
-                    MessageBox.Show("Tạo tài khoản thành công!!!");
+                    type = "CONGTY";
                 }
-                else if (kt == 1)
+                else if (rbCN.Checked == true)
                 {
-                    MessageBox.Show("Login name bị trùng!!!");
+                    type = "CHINHANH";
                 }
-                else if (kt == 2)
+                else if (rbU.Checked == true)
                 {
-                    MessageBox.Show("Username bị trùng!!!");
+                    type = "USER";
                 }
+                    int manv = int.Parse(cmbHoTen.SelectedValue.ToString());
+                    String loginName = txtTK.Text;
+                    String pass = txtPass.Text;
+                /*String strLenh = "EXECUTE dbo.SP_TAOLOGIN " + loginName + "," + pass + "," + manv + "," + type;
+                 int kt = Program.ExecuteScalar(strLenh);
+                 if (kt == 0)
+                 {
+                     MessageBox.Show("Tạo tài khoản thành công!!!");
+                 }
+                 else if (kt == 1)
+                 {
+                     MessageBox.Show("Login name bị trùng!!!");
+                 }
+                 else if (kt == 2)
+                 {
+                     MessageBox.Show("Username bị trùng!!!");
+                 }*/
+                if (Program.KetNoi() == 0) return;
+                //MessageBox.Show("Đăng nhập thành công" +Program.mlogin, " ", MessageBoxButtons.OK);
+                String strLenh = "EXECUTE dbo.SP_TAOLOGIN N'" + loginName + "',N'" + pass + "',N'" + manv + "',N'" + type + "'";
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                if (Program.myReader == null) return;
+                Program.myReader.Read();
+                MessageBox.Show("Tạo tài khoản thành công", " ", MessageBoxButtons.OK);
+
+                /*Program.mloginDN = Program.mlogin;
+                Program.passwordDN = Program.password;*/
+
+                Program.myReader.Close();
+                Program.conn.Close();
             }
         }
 

@@ -220,6 +220,7 @@ namespace QLVT
             this.ribbonPageGroup9});
             this.rib_DanhMuc.Name = "rib_DanhMuc";
             this.rib_DanhMuc.Text = "Danh mục";
+            this.rib_DanhMuc.Visible = false;
             // 
             // ribbonPageGroup2
             // 
