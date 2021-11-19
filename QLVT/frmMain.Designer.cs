@@ -328,6 +328,7 @@ namespace QLVT
             this.Name = "frmMain";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Quản lý vật tư";
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

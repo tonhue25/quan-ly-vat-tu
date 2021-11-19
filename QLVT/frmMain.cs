@@ -45,6 +45,18 @@ namespace QLVT
             rib_BaoCao.Visible = rib_DanhMuc.Visible  = true;
             // tiep tuc if tren Program.mGroup de bat/ tat cac nut lệnh tương ứng trên menu chính
             // ex: công ty chỉ được quyền xem dữ liệu.
+            if (Program.mGroup == "USER")
+            {
+                btn_TaoTK.Enabled = false;
+            }
+            else if (Program.mGroup == "CONGTY")
+            {
+                btn_TaoTK.Enabled = true;
+            }
+            else if (Program.mGroup == "CHINHANH")
+            {
+                btn_TaoTK.Enabled = true;
+            }
         }
 
         private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -53,7 +65,6 @@ namespace QLVT
             if (frm != null) frm.Activate();
             else
             {
-                // HIEN THI DUOC FORM NHAN VIEN ROI A
                 frmNhanVien f = new frmNhanVien();
                 f.MdiParent = this;
                 f.Show();
@@ -164,6 +175,11 @@ namespace QLVT
                 f.MdiParent = this;
                 f.Show();
             }
+        }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            btn_TaoTK.Enabled = false;
         }
     }
 }
