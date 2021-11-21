@@ -208,11 +208,17 @@ namespace QLVT
             }
         }
 
+        public void GetData (String data)
+        {
+            txtMaKho.Text = "";
+            txtMaKho.Text = data;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Program.subFormKho = new subformKho();
             Program.subFormKho.Show();
             Program.frmChinh.Enabled = false;
+            Program.subFormKho.mydata = new subformKho.SendData(GetData);
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -252,10 +258,7 @@ namespace QLVT
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // them => bo them.
-            // sua => bo sua.
             bdsPX.CancelEdit();
-            // luc nay them roi, thi lay vi tri do luu lai
             if (btnThem.Enabled == false) bdsPX.Position = vitri;
             gcPX.Enabled = true;
             pnNhap.Enabled = false;

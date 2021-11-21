@@ -12,6 +12,8 @@ namespace QLVT
 {
     public partial class subformKho : Form
     {
+        public delegate void SendData(String value);
+        public SendData mydata;
         public subformKho()
         {
             InitializeComponent();
@@ -46,10 +48,13 @@ namespace QLVT
             return ((DataRowView)bindingSource[bindingSource.Position])[column].ToString().Trim();
         }
 
+        // khi click vô hàng đó thì bên form gọi nó sẽ nhận đc mã kho gửi đi.
         private void btn_chon_Click(object sender, EventArgs e)
         {
             // lay ma kho , nhưng làm sao để mang mã kho qua bên kia, hiển thị dl mã kho lên txtMaKho.
             Program.maKho = getDataRow(bdsKho, "MAKHO");
+            mydata(Program.maKho);
+
         }
     }
 }
