@@ -30,65 +30,36 @@ namespace QLVT
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label mANVLabel;
-            this.cmChiNhanh = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_Chuyen = new System.Windows.Forms.Button();
             this.dS_DH = new QLVT.DS_DH();
-            this.bdsCN = new System.Windows.Forms.BindingSource(this.components);
+            this.chiNhanhBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chiNhanhTableAdapter = new QLVT.DS_DHTableAdapters.ChiNhanhTableAdapter();
             this.tableAdapterManager = new QLVT.DS_DHTableAdapters.TableAdapterManager();
-            this.btn_Huy = new System.Windows.Forms.Button();
-            mANVLabel = new System.Windows.Forms.Label();
+            this.cmbChiNhanh1 = new System.Windows.Forms.ComboBox();
+            this.btnChuyen = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chiNhanhBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mANVLabel
-            // 
-            mANVLabel.AutoSize = true;
-            mANVLabel.Location = new System.Drawing.Point(29, 75);
-            mANVLabel.Name = "mANVLabel";
-            mANVLabel.Size = new System.Drawing.Size(0, 13);
-            mANVLabel.TabIndex = 5;
-            // 
-            // cmChiNhanh
-            // 
-            this.cmChiNhanh.FormattingEnabled = true;
-            this.cmChiNhanh.Location = new System.Drawing.Point(117, 29);
-            this.cmChiNhanh.Name = "cmChiNhanh";
-            this.cmChiNhanh.Size = new System.Drawing.Size(163, 21);
-            this.cmChiNhanh.TabIndex = 3;
-            this.cmChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbChiNhanh_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 32);
+            this.label1.Location = new System.Drawing.Point(46, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Chi nhánh";
-            // 
-            // btn_Chuyen
-            // 
-            this.btn_Chuyen.Location = new System.Drawing.Point(72, 70);
-            this.btn_Chuyen.Name = "btn_Chuyen";
-            this.btn_Chuyen.Size = new System.Drawing.Size(75, 23);
-            this.btn_Chuyen.TabIndex = 4;
-            this.btn_Chuyen.Text = "Chọn";
-            this.btn_Chuyen.UseVisualStyleBackColor = true;
-            this.btn_Chuyen.Click += new System.EventHandler(this.btn_Chuyen_Click);
             // 
             // dS_DH
             // 
             this.dS_DH.DataSetName = "DS_DH";
             this.dS_DH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // bdsCN
+            // chiNhanhBindingSource
             // 
-            this.bdsCN.DataMember = "ChiNhanh";
-            this.bdsCN.DataSource = this.dS_DH;
+            this.chiNhanhBindingSource.DataMember = "ChiNhanh";
+            this.chiNhanhBindingSource.DataSource = this.dS_DH;
             // 
             // chiNhanhTableAdapter
             // 
@@ -109,46 +80,62 @@ namespace QLVT
             this.tableAdapterManager.UpdateOrder = QLVT.DS_DHTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
-            // btn_Huy
+            // cmbChiNhanh1
             // 
-            this.btn_Huy.Location = new System.Drawing.Point(205, 70);
-            this.btn_Huy.Name = "btn_Huy";
-            this.btn_Huy.Size = new System.Drawing.Size(75, 23);
-            this.btn_Huy.TabIndex = 6;
-            this.btn_Huy.Text = "Hủy";
-            this.btn_Huy.UseVisualStyleBackColor = true;
-            this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
+            this.cmbChiNhanh1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.chiNhanhBindingSource, "MACN", true));
+            this.cmbChiNhanh1.FormattingEnabled = true;
+            this.cmbChiNhanh1.Location = new System.Drawing.Point(120, 48);
+            this.cmbChiNhanh1.Name = "cmbChiNhanh1";
+            this.cmbChiNhanh1.Size = new System.Drawing.Size(147, 21);
+            this.cmbChiNhanh1.TabIndex = 5;
+            // 
+            // btnChuyen
+            // 
+            this.btnChuyen.Location = new System.Drawing.Point(49, 108);
+            this.btnChuyen.Name = "btnChuyen";
+            this.btnChuyen.Size = new System.Drawing.Size(75, 23);
+            this.btnChuyen.TabIndex = 6;
+            this.btnChuyen.Text = "Chọn";
+            this.btnChuyen.UseVisualStyleBackColor = true;
+            this.btnChuyen.Click += new System.EventHandler(this.btnChuyen_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(183, 108);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Hủy";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmChuyenCN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 117);
-            this.Controls.Add(this.btn_Huy);
-            this.Controls.Add(mANVLabel);
-            this.Controls.Add(this.btn_Chuyen);
-            this.Controls.Add(this.cmChiNhanh);
+            this.ClientSize = new System.Drawing.Size(334, 183);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnChuyen);
+            this.Controls.Add(this.cmbChiNhanh1);
             this.Controls.Add(this.label1);
             this.Name = "frmChuyenCN";
-            this.Text = "Chuyển chi nhánh";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmChuyenCN_FormClosing);
+            this.Text = "Chọn chi nhánh ";
             this.Load += new System.EventHandler(this.frmChuyenCN_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_DH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chiNhanhBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cmChiNhanh;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_Chuyen;
         private DS_DH dS_DH;
-        private System.Windows.Forms.BindingSource bdsCN;
+        private System.Windows.Forms.BindingSource chiNhanhBindingSource;
         private DS_DHTableAdapters.ChiNhanhTableAdapter chiNhanhTableAdapter;
         private DS_DHTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Button btn_Huy;
+        private System.Windows.Forms.ComboBox cmbChiNhanh1;
+        private System.Windows.Forms.Button btnChuyen;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,66 +17,50 @@ namespace QLVT
         {
             InitializeComponent();
         }
-       
-        private void btn_Chuyen_Click(object sender, EventArgs e)
-        {
-            String macn = ((DataRowView)bdsCN[0])["MACN"].ToString();
-            MessageBox.Show(macn);
-        }
-
-        private void frmChuyenCN_Load(object sender, EventArgs e)
-        {
-            dS_DH.EnforceConstraints = false;
-            this.chiNhanhTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.chiNhanhTableAdapter.Fill(this.dS_DH.ChiNhanh);
-
-            cmChiNhanh.DataSource = Program.bds_dspm;
-            cmChiNhanh.DisplayMember = "TENCN";
-            cmChiNhanh.ValueMember = "TENSERVER";
-            cmChiNhanh.SelectedIndex = Program.mChiNhanh;
-        }
-
-        private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView")
-            {
-                return;
-            }
-            Program.servername = cmChiNhanh.SelectedValue.ToString();
-            if (cmChiNhanh.SelectedIndex != Program.mChiNhanh)
-            {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối chi nhánh mới!", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                this.chiNhanhTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.chiNhanhTableAdapter.Fill(this.dS_DH.ChiNhanh);
-            }
-        }
-
-        private void frmChuyenCN_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Program.frmChinh.Enabled = true;
-        }
 
         private void chiNhanhBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.bdsCN.EndEdit();
+            this.chiNhanhBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.dS_DH);
+
         }
 
-        private void btn_Huy_Click(object sender, EventArgs e)
+        private void frmChuyenCN_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dS_DH.ChiNhanh' table. You can move, or remove it, as needed.
+            this.chiNhanhTableAdapter.Fill(this.dS_DH.ChiNhanh);
+            cmbChiNhanh1.DataSource = Program.bds_dspm.DataSource;
+            cmbChiNhanh1.DisplayMember = "TENCN";
+            cmbChiNhanh1.ValueMember = "TENSERVER";
+            cmbChiNhanh1.SelectedIndex = Program.mChiNhanh;
+        }
+
+        private void btnChuyen_Click(object sender, EventArgs e)
+        {
+            if (cmbChiNhanh1.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Vui lòng chọn chi nhánh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmNhanVien.serverMoi = cmbChiNhanh1.SelectedValue.ToString();
+            // Chi nhánh được chọn là chi nhánh đang đăng nhập
+            if (frmNhanVien.serverMoi.Equals(Program.servername))
+            {
+                MessageBox.Show("Hãy chọn chi nhánh khác chi nhánh bạn đang đăng nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Hành động này không thế hoàn tác.\nBạn có chắc chắn muốn chuyển nhân viên này không?", "Thông báo",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (dr != DialogResult.OK) return;
+
+            this.Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }

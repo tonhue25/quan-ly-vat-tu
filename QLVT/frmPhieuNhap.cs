@@ -15,7 +15,7 @@ namespace QLVT
         String macn = "";
         int vitri = 0;
 
-        String maPN = "";
+        //String maPN = "";
         public delegate void SendData(String value);
         public SendData mydata;
 

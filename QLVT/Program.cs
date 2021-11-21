@@ -69,7 +69,6 @@ namespace QLVT
         {
             SqlDataReader myReader;
             SqlCommand sqlcmd = new SqlCommand(strLenh, Program.conn);
-            // kieu cau lenh
             sqlcmd.CommandType = CommandType.Text;
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
             try

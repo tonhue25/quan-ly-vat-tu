@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -293,21 +294,71 @@ namespace QLVT
                 this.phieuXuatTableAdapter.Fill(this.DS_NhanVien.PhieuXuat);
             }
         }
-       
+
+        private Form CheckExists(Type ftype)
+        {
+            foreach (Form f in this.MdiChildren)
+                if (f.GetType() == ftype)
+                    return f;
+            return null;
+        }
+
+        public static String serverMoi = "";
+
         private void btn_ChuyenCN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int ttx = (txtTTX.Checked == true) ? 1 : 0;
-            if (ttx == 0)
+            int viTriHT = bdsNV.Position;
+            int trangThaiXoa = int.Parse(((DataRowView)(bdsNV[viTriHT]))["TrangThaiXoa"].ToString());
+            string maNV = ((DataRowView)(bdsNV[viTriHT]))["MANV"].ToString();
+
+            if (maNV == Program.username)
             {
-                frmChuyenCN f = new frmChuyenCN();
-                f.Show();
-                Program.frmChinh.Enabled = false;
-               /* String strLenh = "EXEC SP_ChuyenCN " + Program.maNV_ChuyenCN + ",CN2";
-                int n = Program.ExecSqlNonQuery(strLenh);*/
+                MessageBox.Show("Không thể chuyển chính người đang đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            if (ttx == 1)
+
+            if (trangThaiXoa == 1)
             {
-                MessageBox.Show("Nhân viên đã xóa, không được chuyển chi nhánh!!!", "", MessageBoxButtons.OK);
+                MessageBox.Show("Nhân viên này không có ở chi nhánh này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Form f = this.CheckExists(typeof(frmChuyenCN));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            frmChuyenCN form = new frmChuyenCN();
+            form.ShowDialog();
+            if (!serverMoi.Equals(""))
+                chuyenCN(serverMoi);
+        }
+
+        public void chuyenCN(String server)
+        {
+            String maChiNhanhMoi = "";
+            if (server.Contains("1"))
+                maChiNhanhMoi = "CN1";
+
+            else if (server.Contains("2"))
+                maChiNhanhMoi = "CN2";
+
+            else
+            {
+                MessageBox.Show("Mã chi nhánh không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int position = bdsNV.Position;
+            String maNV = ((DataRowView)bdsNV[position])["MANV"].ToString();
+
+            String strLenh = "EXEC SP_ChuyenCN " + maNV + ",'" + maChiNhanhMoi + "'";
+            int n = Program.ExecSqlNonQuery(strLenh);
+            if (n == 0)
+            {
+
+                MessageBox.Show("Chuyển chi nhánh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.nhanVienTableAdapter.Fill(this.DS_NhanVien.NhanVien);
                 return;
             }
         }
