@@ -30,7 +30,6 @@ namespace QLVT
         public static String mGroup = "";
         public static String mHoten = "";
         public static int mChiNhanh = 0;
-
         public static BindingSource bds_dspm = new BindingSource();
        
         public static frmMain frmChinh;
@@ -112,9 +111,7 @@ namespace QLVT
             }
             catch (SqlException ex)
             {
-                if (ex.Message.Contains("Error converting data type varchar to int"))
-                    MessageBox.Show("Bạn format cell lại cột \"Ngày Thi\" qua kiểu Number hoặc mở File Excell.");
-                else MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 conn.Close();
                 return ex.State;
             }
@@ -139,6 +136,31 @@ namespace QLVT
                 return ex.State;
             }
         }
+
+        public static int ExecuteNonQuery(String cmd)
+        {
+
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = Program.conn;
+            sqlcmd.CommandText = cmd;
+            sqlcmd.CommandType = CommandType.Text;
+            sqlcmd.CommandTimeout = 600; //Chỉ dùng cho cơ sở dữ liệu lớn
+
+            if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                Program.conn.Close();
+                return 1;
+            }
+            catch (SqlException ex)
+            {
+                Program.conn.Close();
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
         [STAThread]
         static void Main()
         {

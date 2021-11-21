@@ -79,10 +79,10 @@ namespace QLVT
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnNhap = new DevExpress.XtraEditors.PanelControl();
-            this.btn_ThemCTPN = new System.Windows.Forms.Button();
             this.txtMaKho = new System.Windows.Forms.TextBox();
             this.dptNgay = new DevExpress.XtraEditors.DateEdit();
             this.txtMaPN = new System.Windows.Forms.TextBox();
+            this.btn_ThemCTPN = new System.Windows.Forms.Button();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.gcCTPN = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -533,16 +533,6 @@ namespace QLVT
             this.pnNhap.Size = new System.Drawing.Size(244, 216);
             this.pnNhap.TabIndex = 13;
             // 
-            // btn_ThemCTPN
-            // 
-            this.btn_ThemCTPN.Location = new System.Drawing.Point(320, 174);
-            this.btn_ThemCTPN.Name = "btn_ThemCTPN";
-            this.btn_ThemCTPN.Size = new System.Drawing.Size(75, 23);
-            this.btn_ThemCTPN.TabIndex = 8;
-            this.btn_ThemCTPN.Text = "Thêm CTPN";
-            this.btn_ThemCTPN.UseVisualStyleBackColor = true;
-            this.btn_ThemCTPN.Click += new System.EventHandler(this.btn_ThemCTPN_Click);
-            // 
             // txtMaKho
             // 
             this.txtMaKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPN, "MAKHO", true));
@@ -572,6 +562,16 @@ namespace QLVT
             this.txtMaPN.Name = "txtMaPN";
             this.txtMaPN.Size = new System.Drawing.Size(121, 21);
             this.txtMaPN.TabIndex = 1;
+            // 
+            // btn_ThemCTPN
+            // 
+            this.btn_ThemCTPN.Location = new System.Drawing.Point(320, 174);
+            this.btn_ThemCTPN.Name = "btn_ThemCTPN";
+            this.btn_ThemCTPN.Size = new System.Drawing.Size(75, 23);
+            this.btn_ThemCTPN.TabIndex = 8;
+            this.btn_ThemCTPN.Text = "Thêm CTPN";
+            this.btn_ThemCTPN.UseVisualStyleBackColor = true;
+            this.btn_ThemCTPN.Click += new System.EventHandler(this.btn_ThemCTPN_Click);
             // 
             // panelControl4
             // 

@@ -49,13 +49,6 @@ namespace QLVT
                 cmbChiNhanh.Enabled = false;
                 rbCN.Enabled = rbU.Enabled = true;
             }
-            /*if (Program.mGroup == "USER")
-            {
-                // chi nhánh được tạo login nhóm chi nhánh và user
-                rbCT.Enabled = false;
-                cmbChiNhanh.Enabled = false;
-                rbCN.Enabled = rbU.Enabled = false;
-            }*/
         }
 
         private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)

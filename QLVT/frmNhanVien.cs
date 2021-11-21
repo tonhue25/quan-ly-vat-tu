@@ -16,9 +16,7 @@ namespace QLVT
     public partial class frmNhanVien : Form
     {
         String macn = "";
-        // dung trong them va phuc hoi
         int vitri = 0;
-        Stack undolist = new Stack();
         public frmNhanVien()
         {
             InitializeComponent();
@@ -234,15 +232,15 @@ namespace QLVT
             cmbChiNhanh.SelectedIndex = Program.mChiNhanh;
             if (Program.mGroup == "CONGTY")
             {
-                cmbChiNhanh.Enabled = btn_InDSNV.Enabled = true;
+                // chi có công ty mới chuyển chi nhánh của nhân viên.
+                cmbChiNhanh.Enabled= btn_ChuyenCN.Enabled = btn_InDSNV.Enabled = true;
                 btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
             }
             else
             {
                 btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
-                cmbChiNhanh.Enabled = btn_InDSNV.Enabled = false;
+                cmbChiNhanh.Enabled = btn_ChuyenCN.Enabled  = btn_InDSNV.Enabled = false;
             }
-            // phan quyen cho may nut lenh nho nho nua
         }
 
         private void nhanVienBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -293,9 +291,26 @@ namespace QLVT
 
                 this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.phieuXuatTableAdapter.Fill(this.DS_NhanVien.PhieuXuat);
-
-                //macn = ((DataRowView)bdsNV[0])["MACN"].ToString();
             }
         }
+       
+        private void btn_ChuyenCN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int ttx = (txtTTX.Checked == true) ? 1 : 0;
+            if (ttx == 0)
+            {
+                frmChuyenCN f = new frmChuyenCN();
+                f.Show();
+                Program.frmChinh.Enabled = false;
+               /* String strLenh = "EXEC SP_ChuyenCN " + Program.maNV_ChuyenCN + ",CN2";
+                int n = Program.ExecSqlNonQuery(strLenh);*/
+            }
+            if (ttx == 1)
+            {
+                MessageBox.Show("Nhân viên đã xóa, không được chuyển chi nhánh!!!", "", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        
     }
 }

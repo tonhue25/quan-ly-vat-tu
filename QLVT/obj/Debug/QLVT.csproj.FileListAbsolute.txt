@@ -438,3 +438,4 @@ D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.exe
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.pdb
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.Xrpt_HoatDongNhanVien.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.frmTaoTaiKhoan.resources
+D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.frmChuyenCN.resources

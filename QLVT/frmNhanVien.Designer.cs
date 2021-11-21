@@ -38,10 +38,10 @@ namespace QLVT
             System.Windows.Forms.Label trangThaiXoaLabel;
             System.Windows.Forms.Label lUONGLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanVien));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode5 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode6 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode7 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode8 = new DevExpress.XtraGrid.GridLevelNode();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -50,6 +50,7 @@ namespace QLVT
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btn_InDSNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_ChuyenCN = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -135,7 +136,7 @@ namespace QLVT
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(60, 138);
+            dIACHILabel.Location = new System.Drawing.Point(361, 101);
             dIACHILabel.Name = "dIACHILabel";
             dIACHILabel.Size = new System.Drawing.Size(46, 13);
             dIACHILabel.TabIndex = 6;
@@ -144,7 +145,7 @@ namespace QLVT
             // nGAYSINHLabel
             // 
             nGAYSINHLabel.AutoSize = true;
-            nGAYSINHLabel.Location = new System.Drawing.Point(59, 55);
+            nGAYSINHLabel.Location = new System.Drawing.Point(60, 62);
             nGAYSINHLabel.Name = "nGAYSINHLabel";
             nGAYSINHLabel.Size = new System.Drawing.Size(61, 13);
             nGAYSINHLabel.TabIndex = 8;
@@ -162,7 +163,7 @@ namespace QLVT
             // trangThaiXoaLabel
             // 
             trangThaiXoaLabel.AutoSize = true;
-            trangThaiXoaLabel.Location = new System.Drawing.Point(361, 96);
+            trangThaiXoaLabel.Location = new System.Drawing.Point(625, 66);
             trangThaiXoaLabel.Name = "trangThaiXoaLabel";
             trangThaiXoaLabel.Size = new System.Drawing.Size(84, 13);
             trangThaiXoaLabel.TabIndex = 12;
@@ -171,7 +172,7 @@ namespace QLVT
             // lUONGLabel
             // 
             lUONGLabel.AutoSize = true;
-            lUONGLabel.Location = new System.Drawing.Point(62, 92);
+            lUONGLabel.Location = new System.Drawing.Point(62, 101);
             lUONGLabel.Name = "lUONGLabel";
             lUONGLabel.Size = new System.Drawing.Size(44, 13);
             lUONGLabel.TabIndex = 14;
@@ -196,9 +197,10 @@ namespace QLVT
             this.btnUndo,
             this.btnReload,
             this.btn_InDSNV,
-            this.btnThoat});
+            this.btnThoat,
+            this.btn_ChuyenCN});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -214,6 +216,7 @@ namespace QLVT
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.btn_InDSNV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_ChuyenCN),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -268,6 +271,13 @@ namespace QLVT
             this.btn_InDSNV.Id = 6;
             this.btn_InDSNV.Name = "btn_InDSNV";
             this.btn_InDSNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
+            // btn_ChuyenCN
+            // 
+            this.btn_ChuyenCN.Caption = "Chuyển chi nhánh";
+            this.btn_ChuyenCN.Id = 8;
+            this.btn_ChuyenCN.Name = "btn_ChuyenCN";
+            this.btn_ChuyenCN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ChuyenCN_ItemClick);
             // 
             // btnThoat
             // 
@@ -407,16 +417,16 @@ namespace QLVT
             // 
             this.gcNhanVien.DataSource = this.bdsNV;
             this.gcNhanVien.Dock = System.Windows.Forms.DockStyle.Top;
-            gridLevelNode2.RelationName = "FK_PhieuNhap_DatHang";
-            gridLevelNode1.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            gridLevelNode1.RelationName = "FK_DatHang_NhanVien";
-            gridLevelNode3.RelationName = "FK_PhieuNhap_NhanVien";
-            gridLevelNode4.RelationName = "FK_PX_NhanVien";
+            gridLevelNode6.RelationName = "FK_PhieuNhap_DatHang";
+            gridLevelNode5.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode6});
+            gridLevelNode5.RelationName = "FK_DatHang_NhanVien";
+            gridLevelNode7.RelationName = "FK_PhieuNhap_NhanVien";
+            gridLevelNode8.RelationName = "FK_PX_NhanVien";
             this.gcNhanVien.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1,
-            gridLevelNode3,
-            gridLevelNode4});
+            gridLevelNode5,
+            gridLevelNode7,
+            gridLevelNode8});
             this.gcNhanVien.Location = new System.Drawing.Point(0, 119);
             this.gcNhanVien.MainView = this.gridView1;
             this.gcNhanVien.MenuManager = this.barManager1;
@@ -535,9 +545,9 @@ namespace QLVT
             // txtTTX
             // 
             this.txtTTX.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsNV, "TrangThaiXoa", true));
-            this.txtTTX.Location = new System.Drawing.Point(507, 96);
+            this.txtTTX.Location = new System.Drawing.Point(727, 62);
             this.txtTTX.Name = "txtTTX";
-            this.txtTTX.Size = new System.Drawing.Size(104, 24);
+            this.txtTTX.Size = new System.Drawing.Size(32, 24);
             this.txtTTX.TabIndex = 13;
             this.txtTTX.UseVisualStyleBackColor = true;
             // 
@@ -567,9 +577,9 @@ namespace QLVT
             // txtDiaChi
             // 
             this.txtDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsNV, "DIACHI", true));
-            this.txtDiaChi.Location = new System.Drawing.Point(127, 135);
+            this.txtDiaChi.Location = new System.Drawing.Point(422, 97);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(601, 21);
+            this.txtDiaChi.Size = new System.Drawing.Size(179, 21);
             this.txtDiaChi.TabIndex = 7;
             // 
             // txtTen
@@ -699,5 +709,6 @@ namespace QLVT
         private DevExpress.XtraGrid.Columns.GridColumn colLUONG;
         private DevExpress.XtraGrid.Columns.GridColumn colMACN;
         private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
+        private DevExpress.XtraBars.BarButtonItem btn_ChuyenCN;
     }
 }

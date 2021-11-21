@@ -106,6 +106,12 @@
     <Compile Include="frmChiTietSL.Designer.cs">
       <DependentUpon>frmChiTietSL.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChuyenCN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChuyenCN.Designer.cs">
+      <DependentUpon>frmChuyenCN.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDDH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </Compile>
     <EmbeddedResource Include="frmChiTietSL.resx">
       <DependentUpon>frmChiTietSL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChuyenCN.resx">
+      <DependentUpon>frmChuyenCN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDDH.resx">
       <DependentUpon>frmDDH.cs</DependentUpon>
