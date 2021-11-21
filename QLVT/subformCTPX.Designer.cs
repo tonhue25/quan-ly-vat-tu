@@ -35,9 +35,10 @@ namespace QLVT
             System.Windows.Forms.Label sOLUONGLabel;
             System.Windows.Forms.Label dONGIALabel;
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.txtDonGia = new System.Windows.Forms.TextBox();
+            this.txtSL = new System.Windows.Forms.TextBox();
             this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DH = new QLVT.DS_DH();
+            this.txtDonGia = new System.Windows.Forms.TextBox();
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaPX = new System.Windows.Forms.TextBox();
             this.btn_ghi = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace QLVT
             this.vattuTableAdapter = new QLVT.DS_DHTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new QLVT.DS_DHTableAdapters.TableAdapterManager();
             this.cTPXTableAdapter = new QLVT.DS_DHTableAdapters.CTPXTableAdapter();
-            this.txtSL = new System.Windows.Forms.TextBox();
             mAPXLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -121,13 +121,13 @@ namespace QLVT
             this.panelControl1.Size = new System.Drawing.Size(288, 300);
             this.panelControl1.TabIndex = 0;
             // 
-            // txtDonGia
+            // txtSL
             // 
-            this.txtDonGia.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "DONGIA", true));
-            this.txtDonGia.Location = new System.Drawing.Point(96, 140);
-            this.txtDonGia.Name = "txtDonGia";
-            this.txtDonGia.Size = new System.Drawing.Size(100, 21);
-            this.txtDonGia.TabIndex = 12;
+            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "SOLUONG", true));
+            this.txtSL.Location = new System.Drawing.Point(97, 106);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(100, 21);
+            this.txtSL.TabIndex = 13;
             // 
             // bdsCTPX
             // 
@@ -139,9 +139,18 @@ namespace QLVT
             this.dS_DH.DataSetName = "DS_DH";
             this.dS_DH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // txtDonGia
+            // 
+            this.txtDonGia.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "DONGIA", true));
+            this.txtDonGia.Location = new System.Drawing.Point(96, 140);
+            this.txtDonGia.Name = "txtDonGia";
+            this.txtDonGia.Size = new System.Drawing.Size(100, 21);
+            this.txtDonGia.TabIndex = 12;
+            // 
             // txtMaVT
             // 
             this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "MAVT", true));
+            this.txtMaVT.Enabled = false;
             this.txtMaVT.Location = new System.Drawing.Point(97, 73);
             this.txtMaVT.Name = "txtMaVT";
             this.txtMaVT.Size = new System.Drawing.Size(100, 21);
@@ -150,6 +159,7 @@ namespace QLVT
             // txtMaPX
             // 
             this.txtMaPX.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "MAPX", true));
+            this.txtMaPX.Enabled = false;
             this.txtMaPX.Location = new System.Drawing.Point(96, 36);
             this.txtMaPX.Name = "txtMaPX";
             this.txtMaPX.Size = new System.Drawing.Size(100, 21);
@@ -252,14 +262,6 @@ namespace QLVT
             // cTPXTableAdapter
             // 
             this.cTPXTableAdapter.ClearBeforeFill = true;
-            // 
-            // txtSL
-            // 
-            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPX, "SOLUONG", true));
-            this.txtSL.Location = new System.Drawing.Point(97, 106);
-            this.txtSL.Name = "txtSL";
-            this.txtSL.Size = new System.Drawing.Size(100, 21);
-            this.txtSL.TabIndex = 13;
             // 
             // subformCTPX
             // 

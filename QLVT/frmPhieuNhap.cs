@@ -14,6 +14,11 @@ namespace QLVT
     {
         String macn = "";
         int vitri = 0;
+
+        String maPN = "";
+        public delegate void SendData(String value);
+        public SendData mydata;
+
         public frmPhieuNhap()
         {
             InitializeComponent();
@@ -97,7 +102,6 @@ namespace QLVT
                 this.chiNhanhTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.chiNhanhTableAdapter.Fill(this.dS_DH.ChiNhanh);
 
-                //macn = ((DataRowView)bdsCN[0])["MACN"].ToString();
             }
         }
 
@@ -108,12 +112,20 @@ namespace QLVT
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            vitri = bdsPN.Position;
-            pnNhap.Enabled = true;
-            bdsPN.AddNew();
-            dptNgay.EditValue = DateTime.Now;
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
-            btnGhi.Enabled = btnUndo.Enabled = true;
+            if (bdsDH.Count == 0)
+            {
+                MessageBox.Show("Chưa có đơn đặt hàng!!!", "", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                vitri = bdsPN.Position;
+                pnNhap.Enabled = true;
+                bdsPN.AddNew();
+                dptNgay.EditValue = DateTime.Now;
+                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+                btnGhi.Enabled = btnUndo.Enabled = true;
+            }
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -256,10 +268,7 @@ namespace QLVT
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // them => bo them.
-            // sua => bo sua.
             bdsPN.CancelEdit();
-            // luc nay them roi, thi lay vi tri do luu lai
             if (btnThem.Enabled == false) bdsPN.Position = vitri;
             gcPN.Enabled = true;
             pnNhap.Enabled = false;
@@ -267,11 +276,13 @@ namespace QLVT
             btnGhi.Enabled = btnUndo.Enabled = false;
         }
 
+        // lấy data từ delegate.
         public void GetData(String data)
         {
             txtMaKho.Text = "";
             txtMaKho.Text = data;
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Program.subFormKho = new subformKho();

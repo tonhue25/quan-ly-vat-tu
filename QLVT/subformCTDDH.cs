@@ -56,6 +56,12 @@ namespace QLVT
             Program.frmChinh.Enabled = true;
         }
 
+        public void GetData(String data)
+        {
+            txtMaDDH.Text = "";
+            txtMaDDH.Text = data;
+        }
+
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             txtMaVT.Text = getDataRow(bdsVT, "MAVT");
@@ -100,6 +106,12 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
+            /*if (int.Parse(txtSL.Text.Trim()) > int.Parse(getDataRow(bdsCTDDH, "SOLUONG")))
+            {
+                MessageBox.Show("Không được nhập quá số lượng đặt", "", MessageBoxButtons.OK);
+                txtSL.Focus();
+                return;
+            }*/
             else
             {
                 String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaDDH.Text +"',"+txtMaVT.Text+",MACTDDH";

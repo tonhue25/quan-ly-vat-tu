@@ -280,17 +280,17 @@ namespace QLVT
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 492);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 447);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1097, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1097, 45);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 492);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 447);
             // 
             // btnSua
             // 
@@ -311,7 +311,7 @@ namespace QLVT
             this.panelControl1.Controls.Add(this.cmbChiNhanh);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Location = new System.Drawing.Point(0, 45);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1097, 44);
             this.panelControl1.TabIndex = 6;
@@ -395,7 +395,7 @@ namespace QLVT
             this.panelControl2.Controls.Add(this.gcPN);
             this.panelControl2.Controls.Add(this.gcDH);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(0, 44);
+            this.panelControl2.Location = new System.Drawing.Point(0, 89);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1097, 187);
             this.panelControl2.TabIndex = 12;
@@ -530,9 +530,9 @@ namespace QLVT
             this.pnNhap.Controls.Add(mAPNLabel);
             this.pnNhap.Controls.Add(this.txtMaPN);
             this.pnNhap.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnNhap.Location = new System.Drawing.Point(0, 231);
+            this.pnNhap.Location = new System.Drawing.Point(0, 276);
             this.pnNhap.Name = "pnNhap";
-            this.pnNhap.Size = new System.Drawing.Size(244, 261);
+            this.pnNhap.Size = new System.Drawing.Size(244, 216);
             this.pnNhap.TabIndex = 13;
             // 
             // button1
@@ -590,9 +590,9 @@ namespace QLVT
             this.panelControl4.Controls.Add(this.btn_ThemCTPN);
             this.panelControl4.Controls.Add(this.gcCTPN);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(244, 231);
+            this.panelControl4.Location = new System.Drawing.Point(244, 276);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(853, 261);
+            this.panelControl4.Size = new System.Drawing.Size(853, 216);
             this.panelControl4.TabIndex = 14;
             // 
             // gcCTPN

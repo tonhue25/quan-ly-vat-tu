@@ -422,7 +422,6 @@ D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.frmPhieuXuat.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.I.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.frmKho.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.Properties.Resources.resources
-D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.subformChiTietPN.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.subformCTDDH.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.subformCTPX.resources
 D:\DoAnCSDLPT\QuanLyVatTu\QLVT\obj\Debug\QLVT.subformKho.resources

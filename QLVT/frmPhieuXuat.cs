@@ -12,7 +12,7 @@ namespace QLVT
 {
     public partial class frmPhieuXuat : Form
     {
-        String macn = "";
+        string macn = "";
         int vitri = 0;
         public frmPhieuXuat()
         {
@@ -28,8 +28,6 @@ namespace QLVT
 
         private void frmPhieuXuat_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dS_DH.Kho' table. You can move, or remove it, as needed.
-            
             dS_DH.EnforceConstraints = false;
 
             this.phieuXuatTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -107,8 +105,6 @@ namespace QLVT
 
                 this.chiNhanhTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.chiNhanhTableAdapter.Fill(this.dS_DH.ChiNhanh);
-
-                //macn = ((DataRowView)bdsCN[0])["MACN"].ToString();
             }
         }
 

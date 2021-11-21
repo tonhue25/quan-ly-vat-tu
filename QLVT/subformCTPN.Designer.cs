@@ -164,6 +164,7 @@ namespace QLVT
             // txtMaVT
             // 
             this.txtMaVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPN, "MAVT", true));
+            this.txtMaVT.Enabled = false;
             this.txtMaVT.Location = new System.Drawing.Point(93, 85);
             this.txtMaVT.Name = "txtMaVT";
             this.txtMaVT.Size = new System.Drawing.Size(100, 21);
@@ -172,6 +173,7 @@ namespace QLVT
             // txtMaPN
             // 
             this.txtMaPN.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTPN, "MAPN", true));
+            this.txtMaPN.Enabled = false;
             this.txtMaPN.Location = new System.Drawing.Point(93, 44);
             this.txtMaPN.Name = "txtMaPN";
             this.txtMaPN.Size = new System.Drawing.Size(100, 21);
@@ -292,7 +294,7 @@ namespace QLVT
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Name = "subformCTPN";
-            this.Text = "subformCTPN";
+            this.Text = "Lập chi tiết phiếu nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.subformCTPN_FormClosing);
             this.Load += new System.EventHandler(this.subformCTPN_Load);
             this.Shown += new System.EventHandler(this.subformCTPN_Shown);

@@ -36,10 +36,11 @@ namespace QLVT
             System.Windows.Forms.Label dONGIALabel;
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btn_Ghi = new System.Windows.Forms.Button();
-            this.txtDonGia = new System.Windows.Forms.TextBox();
+            this.txtSL = new System.Windows.Forms.TextBox();
             this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DH = new QLVT.DS_DH();
+            this.btn_Ghi = new System.Windows.Forms.Button();
+            this.txtDonGia = new System.Windows.Forms.TextBox();
             this.txtMaVT = new System.Windows.Forms.TextBox();
             this.txtMaDDH = new System.Windows.Forms.TextBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -53,7 +54,6 @@ namespace QLVT
             this.vattuTableAdapter = new QLVT.DS_DHTableAdapters.VattuTableAdapter();
             this.tableAdapterManager = new QLVT.DS_DHTableAdapters.TableAdapterManager();
             this.cTDDHTableAdapter = new QLVT.DS_DHTableAdapters.CTDDHTableAdapter();
-            this.txtSL = new System.Windows.Forms.TextBox();
             masoDDHLabel = new System.Windows.Forms.Label();
             mAVTLabel = new System.Windows.Forms.Label();
             sOLUONGLabel = new System.Windows.Forms.Label();
@@ -122,6 +122,24 @@ namespace QLVT
             this.panelControl1.Size = new System.Drawing.Size(297, 270);
             this.panelControl1.TabIndex = 0;
             // 
+            // txtSL
+            // 
+            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTDDH, "SOLUONG", true));
+            this.txtSL.Location = new System.Drawing.Point(102, 140);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(127, 21);
+            this.txtSL.TabIndex = 9;
+            // 
+            // bdsCTDDH
+            // 
+            this.bdsCTDDH.DataMember = "CTDDH";
+            this.bdsCTDDH.DataSource = this.dS_DH;
+            // 
+            // dS_DH
+            // 
+            this.dS_DH.DataSetName = "DS_DH";
+            this.dS_DH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btn_Ghi
             // 
             this.btn_Ghi.Location = new System.Drawing.Point(102, 223);
@@ -139,16 +157,6 @@ namespace QLVT
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(127, 21);
             this.txtDonGia.TabIndex = 7;
-            // 
-            // bdsCTDDH
-            // 
-            this.bdsCTDDH.DataMember = "CTDDH";
-            this.bdsCTDDH.DataSource = this.dS_DH;
-            // 
-            // dS_DH
-            // 
-            this.dS_DH.DataSetName = "DS_DH";
-            this.dS_DH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtMaVT
             // 
@@ -258,14 +266,6 @@ namespace QLVT
             // cTDDHTableAdapter
             // 
             this.cTDDHTableAdapter.ClearBeforeFill = true;
-            // 
-            // txtSL
-            // 
-            this.txtSL.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCTDDH, "SOLUONG", true));
-            this.txtSL.Location = new System.Drawing.Point(102, 140);
-            this.txtSL.Name = "txtSL";
-            this.txtSL.Size = new System.Drawing.Size(127, 21);
-            this.txtSL.TabIndex = 9;
             // 
             // subformCTDDH
             // 

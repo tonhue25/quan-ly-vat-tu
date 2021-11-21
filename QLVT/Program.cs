@@ -36,14 +36,11 @@ namespace QLVT
         public static subformKho subFormKho;
         public static subformCTDDH subFormCTDDH;
         public static subformCTPX subFormCTPX;
-        public static subformChiTietPN subFormChiTietPN;
         public static frmChiTietSL frmChiTietSL;
         public static frmDDHChuaCoPN frmDDHChuaCoPN;
         public static frmHDNV formHDNV;
         public static frmTHNX formTHNX;
 
-
-        public static String maKho = "";
         public static String maDDH = "";
         public static String maPN = "";
         public static String maPX = "";

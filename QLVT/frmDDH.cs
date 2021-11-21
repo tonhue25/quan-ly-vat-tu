@@ -15,7 +15,7 @@ namespace QLVT
         String macn = "";
         // dung trong them va phuc hoi
         int vitri = 0;
-
+        
         public frmDDH()
         {
             InitializeComponent();
@@ -134,7 +134,6 @@ namespace QLVT
             pnNhap.Enabled = true;
             bdsDH.AddNew();
             dptNgay.EditValue = DateTime.Now;
-            txtMaKho.Text = Program.maKho;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
         }

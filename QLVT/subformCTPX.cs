@@ -13,6 +13,7 @@ namespace QLVT
     public partial class subformCTPX : Form
     {
         private bool updateSuccess = false;
+        String maPX = "";
         public subformCTPX()
         {
             InitializeComponent();
@@ -91,7 +92,7 @@ namespace QLVT
                         this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.cTPXTableAdapter.Update(this.dS_DH.CTPX);
 
-                        MessageBox.Show("Thêm chi tiết phiếu xuất " + Program.maPX + "thành công !!!");
+                        MessageBox.Show("Thêm chi tiết phiếu xuất " + maPX + "thành công !!!");
 
                         String strLenh2 = "EXECUTE dbo.SP_UpdateSLVatTu N'" + maVT + "'," + soLuong + ",EXPORT";
                         int kt2 = Program.ExecuteScalar(strLenh2);
@@ -102,7 +103,7 @@ namespace QLVT
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi ghi chi tiết phiếu xuất " + Program.maPX + "\n" + ex.Message, "", MessageBoxButtons.OK);
+                        MessageBox.Show("Lỗi ghi chi tiết phiếu xuất " + maPX + "\n" + ex.Message, "", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -114,6 +115,7 @@ namespace QLVT
             }
         }
 
+       
         private void subformCTPX_Shown(object sender, EventArgs e)
         {
             // phai co dong nay thi no moi la them moi

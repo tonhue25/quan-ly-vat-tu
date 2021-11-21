@@ -12,6 +12,7 @@ namespace QLVT
 {
     public partial class subformKho : Form
     {
+        String makho = "";
         public delegate void SendData(String value);
         public SendData mydata;
         public subformKho()
@@ -35,7 +36,7 @@ namespace QLVT
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            Program.maKho = getDataRow(bdsKho, "MAKHO");
+            makho = getDataRow(bdsKho, "MAKHO");
         }
 
         private void subformKho_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,8 +53,12 @@ namespace QLVT
         private void btn_chon_Click(object sender, EventArgs e)
         {
             // lay ma kho , nhưng làm sao để mang mã kho qua bên kia, hiển thị dl mã kho lên txtMaKho.
-            Program.maKho = getDataRow(bdsKho, "MAKHO");
-            mydata(Program.maKho);
+            makho = getDataRow(bdsKho, "MAKHO");
+            mydata(makho);
+            if (makho != null)
+            {
+                this.Close();
+            }
 
         }
     }
