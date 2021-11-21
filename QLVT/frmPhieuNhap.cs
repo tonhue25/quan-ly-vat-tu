@@ -232,8 +232,9 @@ namespace QLVT
             Program.maPN = txtMaPN.Text;
             Program.maDDH = getDataRow(bdsDH, "MasoDDH");
 
-            Program.subFormChiTietPN = new subformChiTietPN();
-            Program.subFormChiTietPN.Show();
+            
+            subformCTPN f = new subformCTPN();
+            f.Show();
             Program.frmChinh.Enabled = false;
         }
 

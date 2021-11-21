@@ -70,6 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS_CTDDH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_CTDDH.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS_DH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,6 +203,12 @@
     <Compile Include="subformCTDDH.Designer.cs">
       <DependentUpon>subformCTDDH.cs</DependentUpon>
     </Compile>
+    <Compile Include="subformCTPN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="subformCTPN.Designer.cs">
+      <DependentUpon>subformCTPN.cs</DependentUpon>
+    </Compile>
     <Compile Include="subformCTPX.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +315,9 @@
     <EmbeddedResource Include="subformCTDDH.resx">
       <DependentUpon>subformCTDDH.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="subformCTPN.resx">
+      <DependentUpon>subformCTPN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="subformCTPX.resx">
       <DependentUpon>subformCTPX.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,6 +343,17 @@
       <DependentUpon>Xrpt_TongHopNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="DS_CTDDH.xsc">
+      <DependentUpon>DS_CTDDH.xsd</DependentUpon>
+    </None>
+    <None Include="DS_CTDDH.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_CTDDH.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_CTDDH.xss">
+      <DependentUpon>DS_CTDDH.xsd</DependentUpon>
+    </None>
     <None Include="DS_DH.xsc">
       <DependentUpon>DS_DH.xsd</DependentUpon>
     </None>

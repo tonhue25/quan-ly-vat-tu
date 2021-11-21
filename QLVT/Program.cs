@@ -42,6 +42,7 @@ namespace QLVT
         public static frmHDNV formHDNV;
         public static frmTHNX formTHNX;
 
+
         public static String maKho = "";
         public static String maDDH = "";
         public static String maPN = "";
