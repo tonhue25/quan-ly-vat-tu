@@ -66,7 +66,7 @@ namespace QLVT
                 txtLuong.Focus();
                 return;
             }
-            if (float.Parse(txtLuong.Text) >= 4000000)
+            if (float.Parse(txtLuong.Text) < 4000000)
             {
                 MessageBox.Show("Lương nhân viên phải >= 4.000.000!!!", "", MessageBoxButtons.OK);
                 txtLuong.Focus();
@@ -311,6 +311,5 @@ namespace QLVT
                 return;
             }
         }
-        
     }
 }

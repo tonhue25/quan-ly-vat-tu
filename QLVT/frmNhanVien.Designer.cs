@@ -52,6 +52,7 @@ namespace QLVT
             this.btn_InDSNV = new DevExpress.XtraBars.BarButtonItem();
             this.btn_ChuyenCN = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -198,9 +199,10 @@ namespace QLVT
             this.btnReload,
             this.btn_InDSNV,
             this.btnThoat,
-            this.btn_ChuyenCN});
+            this.btn_ChuyenCN,
+            this.btn_Sua});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 9;
+            this.barManager1.MaxItemId = 10;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -287,6 +289,12 @@ namespace QLVT
             this.btnThoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.LargeImage")));
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThoat_ItemClick);
+            // 
+            // btn_Sua
+            // 
+            this.btn_Sua.Caption = "Sửa";
+            this.btn_Sua.Id = 9;
+            this.btn_Sua.Name = "btn_Sua";
             // 
             // bar2
             // 
@@ -710,5 +718,6 @@ namespace QLVT
         private DevExpress.XtraGrid.Columns.GridColumn colMACN;
         private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
         private DevExpress.XtraBars.BarButtonItem btn_ChuyenCN;
+        private DevExpress.XtraBars.BarButtonItem btn_Sua;
     }
 }
