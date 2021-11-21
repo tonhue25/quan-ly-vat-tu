@@ -265,5 +265,18 @@ namespace QLVT
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = false;
         }
+
+        public void GetData(String data)
+        {
+            txtMaKho.Text = "";
+            txtMaKho.Text = data;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.subFormKho = new subformKho();
+            Program.subFormKho.Show();
+            Program.frmChinh.Enabled = false;
+            Program.subFormKho.mydata = new subformKho.SendData(GetData);
+        }
     }
 }

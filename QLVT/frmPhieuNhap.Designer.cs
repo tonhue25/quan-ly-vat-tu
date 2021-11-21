@@ -79,6 +79,7 @@ namespace QLVT
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnNhap = new DevExpress.XtraEditors.PanelControl();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtMaKho = new System.Windows.Forms.TextBox();
             this.dptNgay = new DevExpress.XtraEditors.DateEdit();
             this.txtMaPN = new System.Windows.Forms.TextBox();
@@ -521,6 +522,7 @@ namespace QLVT
             // 
             // pnNhap
             // 
+            this.pnNhap.Controls.Add(this.button1);
             this.pnNhap.Controls.Add(mAKHOLabel);
             this.pnNhap.Controls.Add(this.txtMaKho);
             this.pnNhap.Controls.Add(nGAYLabel);
@@ -532,6 +534,16 @@ namespace QLVT
             this.pnNhap.Name = "pnNhap";
             this.pnNhap.Size = new System.Drawing.Size(244, 216);
             this.pnNhap.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(109, 158);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtMaKho
             // 
@@ -742,5 +754,6 @@ namespace QLVT
         private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
         private DevExpress.XtraGrid.Columns.GridColumn colMANV;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
+        public System.Windows.Forms.Button button1;
     }
 }

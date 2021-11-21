@@ -139,11 +139,17 @@ namespace QLVT
             btnGhi.Enabled = btnUndo.Enabled = true;
         }
 
+        public void GetData(String data)
+        {
+            txtMaKho.Text = "";
+            txtMaKho.Text = data;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Program.subFormKho = new subformKho();
             Program.subFormKho.Show();
             Program.frmChinh.Enabled = false;
+            Program.subFormKho.mydata = new subformKho.SendData(GetData);
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
