@@ -172,11 +172,12 @@ namespace QLVT
                 bdsVT.ResetCurrentItem();
 
                 this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.vattuTableAdapter.Update(this.DS_VT.Vattu); //Ghi vào CSDL
+                this.vattuTableAdapter.Update(this.DS_VT.Vattu); 
                 MessageBox.Show("Sửa vật tư thành công!!!", "", MessageBoxButtons.OK);
 
-                btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                btnThem.Enabled = btn_Sua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                 btnGhi.Enabled = btnUndo.Enabled = false;
+
                 gcVatTu.Enabled = true;
                 pnVatTu.Enabled = false;
             }
