@@ -38,7 +38,7 @@ namespace QLVT
 
             // them moi thi chi cho luu va undo thoi.
             // tat luoi
-            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled= btn_InDSNV.Enabled = false;
+            btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnReload.Enabled= btn_InDSNV.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled  = btnThoat.Enabled = true;
             gcNhanVien.Enabled = false;
             them = 1;
@@ -112,7 +112,7 @@ namespace QLVT
                             this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
                             MessageBox.Show("Thêm nhân viên thành công!!!!");
                             gcNhanVien.Enabled = true;
-                            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                            btnThem.Enabled = btn__Sua.Enabled =  btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                             btnGhi.Enabled = btnUndo.Enabled = false;
                             groupBox1.Enabled = false;
                         }
@@ -141,6 +141,11 @@ namespace QLVT
                 this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
                 MessageBox.Show("Sửa nhân viên thành công!!!!");
+
+                gcNhanVien.Enabled = true;
+                btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                btnGhi.Enabled = btnUndo.Enabled = false;
+                groupBox1.Enabled = false;
             }
         }
 
@@ -200,7 +205,7 @@ namespace QLVT
             if (btnThem.Enabled == false) bdsNV.Position = vitri;
             gcNhanVien.Enabled = true;
             groupBox1.Enabled = false;
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+            btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = false;
         }
 
@@ -255,11 +260,11 @@ namespace QLVT
             {
                 // chi có công ty mới chuyển chi nhánh của nhân viên.
                 cmbChiNhanh.Enabled= btn_ChuyenCN.Enabled = btn_InDSNV.Enabled = true;
-                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
             }
             else
             {
-                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
                 cmbChiNhanh.Enabled = btn_ChuyenCN.Enabled  = btn_InDSNV.Enabled = false;
             }
         }
@@ -393,10 +398,9 @@ namespace QLVT
                 gcNhanVien.Enabled = txtMaNV.Enabled = false;
                 groupBox1.Enabled = true;
 
-                btn_ChuyenCN.Enabled = btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+                btn_ChuyenCN.Enabled = btn__Sua.Enabled = btnThem.Enabled = btnXoa.Enabled =  btnReload.Enabled = btnThoat.Enabled = false;
                 btnGhi.Enabled = btnUndo.Enabled = true;
             }
-            //txtMaNV.Enabled = false;
         }
     }
 }

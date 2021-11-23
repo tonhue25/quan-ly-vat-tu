@@ -14,6 +14,7 @@ namespace QLVT
     {
         String macn = "";
         int vitri = 0;
+        int them = 0;
         public frmKho()
         {
             InitializeComponent();
@@ -55,12 +56,12 @@ namespace QLVT
             {
                 cmbChiNhanh.Enabled = true;
                 // khong duoc them xoa sua, => ko can phuc hoi
-                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                btnThem.Enabled =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
             }
             else
             {
                 // nhom khac
-                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btnThem.Enabled =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
                 cmbChiNhanh.Enabled = false;
             }
 
@@ -104,7 +105,6 @@ namespace QLVT
                 this.chiNhanhTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.chiNhanhTableAdapter.Fill(this.DS_Kho.ChiNhanh);
 
-                //macn = ((DataRowView)bdsKho[0])["MACN"].ToString();
             }
         }
 
@@ -135,25 +135,27 @@ namespace QLVT
             if (btnThem.Enabled == false) bdsKho.Position = vitri;
             gcKho.Enabled = true;
             pnKho.Enabled = false;
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+            btnThem.Enabled =  btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = false;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            them = 1;
             vitri = bdsKho.Position;
             // cho khung nhap lieu sang len de nhap.
             pnKho.Enabled = true;
             bdsKho.AddNew();
             txtMaCN.Text = macn;
             
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
             gcKho.Enabled = false;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
             if (txtMaKho.Text.Trim() == "")
             {
                 MessageBox.Show("Mã kho không được để trống", "", MessageBoxButtons.OK);
@@ -178,7 +180,7 @@ namespace QLVT
                 txtMaCN.Focus();
                 return;
             }
-            else
+            if(them == 1)
             {
                 String strLenh1 = "EXECUTE dbo.SP_KT_ID N'" + txtMaKho.Text + "',MAKHO";
                 String strLenh2 = "EXECUTE dbo.SP_KT_ID N'" + txtTenKho.Text + "',TENKHO";
@@ -214,7 +216,7 @@ namespace QLVT
                         this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.khoTableAdapter.Update(this.DS_Kho.Kho);
 
-                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                         btnGhi.Enabled = btnUndo.Enabled = false;
                         gcKho.Enabled = true;
                         pnKho.Enabled = false;
@@ -225,7 +227,20 @@ namespace QLVT
                         return;
                     }
                 }
-                
+
+            }
+            else
+            {
+                bdsKho.EndEdit();
+                bdsKho.ResetCurrentItem();
+
+                this.khoTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.khoTableAdapter.Update(this.DS_Kho.Kho);
+
+                btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                btnGhi.Enabled = btnUndo.Enabled = false;
+                gcKho.Enabled = true;
+                pnKho.Enabled = false;
             }
         }
 
@@ -271,6 +286,17 @@ namespace QLVT
                 }
             }
             if (bdsKho.Count == 0) btnXoa.Enabled = false;
+        }
+
+        private void btn_Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            vitri = bdsKho.Position;
+            
+                gcKho.Enabled = txtMaKho.Enabled = false;
+                pnKho.Enabled = true;
+
+                btn_Sua.Enabled = btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+                btnGhi.Enabled = btnUndo.Enabled = true;
         }
     }
 }
