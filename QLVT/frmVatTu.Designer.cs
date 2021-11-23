@@ -77,6 +77,7 @@ namespace QLVT
             this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
             this.bdsCTPN = new System.Windows.Forms.BindingSource(this.components);
             this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
             mAVTLabel = new System.Windows.Forms.Label();
             tENVTLabel = new System.Windows.Forms.Label();
             dVTLabel = new System.Windows.Forms.Label();
@@ -161,9 +162,10 @@ namespace QLVT
             this.barButtonItem1,
             this.barButtonItem2,
             this.btn_inds,
-            this.btn_thoat});
+            this.btn_thoat,
+            this.btn_Sua});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 13;
+            this.barManager1.MaxItemId = 14;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -176,6 +178,7 @@ namespace QLVT
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_Sua),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
@@ -480,6 +483,13 @@ namespace QLVT
             this.bdsCTPX.DataMember = "FK_CTPX_VatTu";
             this.bdsCTPX.DataSource = this.bdsVT;
             // 
+            // btn_Sua
+            // 
+            this.btn_Sua.Caption = "Sửa";
+            this.btn_Sua.Id = 13;
+            this.btn_Sua.Name = "btn_Sua";
+            this.btn_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Sua_ItemClick);
+            // 
             // I
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,5 +563,6 @@ namespace QLVT
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btn_inds;
         private DevExpress.XtraBars.BarButtonItem btn_thoat;
+        private DevExpress.XtraBars.BarButtonItem btn_Sua;
     }
 }

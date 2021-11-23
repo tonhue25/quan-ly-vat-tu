@@ -14,6 +14,7 @@ namespace QLVT
     public partial class I : Form
     {
         int vitri = 0;
+        int them = 0;
         public I()
         {
             InitializeComponent();
@@ -46,12 +47,12 @@ namespace QLVT
 
             if (Program.mGroup == "CONGTY")
             {
-                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                btnThem.Enabled = btn_Sua.Enabled  =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
             }
             else
             {
                 // nhom khac
-                btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btnThem.Enabled = btn_Sua.Enabled  = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
             }
         }
 
@@ -82,17 +83,18 @@ namespace QLVT
             if (btnThem.Enabled == false) bdsVT.Position = vitri;
             gcVatTu.Enabled = true;
             pnVatTu.Enabled = false;
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled  = btnThoat.Enabled = true;
+            btnThem.Enabled = btn_Sua.Enabled =  btnXoa.Enabled = btnReload.Enabled  = btnThoat.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = btn_inds.Enabled = false;
         }
 
         // them la hien len cai man hinh trong de no nhan thong tin vo
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            them = 1;
             vitri = bdsVT.Position;
             txtMaVT.Enabled = true;
             this.bdsVT.AddNew();
-            btnThem.Enabled = btnXoa.Enabled = gcVatTu.Enabled = btnReload.Enabled = btnUndo.Enabled = false;
+            btnThem.Enabled = btn_Sua.Enabled = btnXoa.Enabled = gcVatTu.Enabled = btnReload.Enabled = btnUndo.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled  = pnVatTu.Enabled = btn_inds.Enabled = true;
 
             //Program.flagCloseFormVT = false; //Bật cờ lên để chặn tắt Form đột ngột khi nhập liệu
@@ -126,7 +128,7 @@ namespace QLVT
                 txtSLT.Focus();
                 return;
             }
-            else
+            if(them == 1)
             {
                 String strLenh1 = "EXECUTE dbo.SP_KT_ID N'" + txtMaVT.Text + "',MAVT";
                int kt1  = Program.ExecuteScalar(strLenh1);
@@ -142,7 +144,7 @@ namespace QLVT
                         this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.vattuTableAdapter.Update(this.DS_VT.Vattu); //Ghi vào CSDL
 
-                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                        btnThem.Enabled =  btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
                         btnGhi.Enabled = btnUndo.Enabled = false;
                         gcVatTu.Enabled = true;
                         pnVatTu.Enabled = false;
@@ -163,6 +165,20 @@ namespace QLVT
                     MessageBox.Show("Lỗi ghi vật tư\n Tên vật tư đã tồn tại!!!", "", MessageBoxButtons.OK);
                     return;
                 }
+            }
+            else
+            {
+                bdsVT.EndEdit(); //ghi vào data set
+                bdsVT.ResetCurrentItem();
+
+                this.vattuTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.vattuTableAdapter.Update(this.DS_VT.Vattu); //Ghi vào CSDL
+                MessageBox.Show("Sửa vật tư thành công!!!", "", MessageBoxButtons.OK);
+
+                btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                btnGhi.Enabled = btnUndo.Enabled = false;
+                gcVatTu.Enabled = true;
+                pnVatTu.Enabled = false;
             }
         }
 
@@ -211,6 +227,17 @@ namespace QLVT
             Xrpt_InDanhSachVatTu rpt = new Xrpt_InDanhSachVatTu();
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
+        }
+
+        private void btn_Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            vitri = bdsVT.Position;
+
+            gcVatTu.Enabled = txtMaVT.Enabled = false;
+            pnVatTu.Enabled = true;
+
+            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btn_Sua.Enabled = btnThoat.Enabled = false;
+            btnGhi.Enabled = btnUndo.Enabled = true;
         }
     }
 }
