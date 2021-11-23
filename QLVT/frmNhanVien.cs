@@ -18,6 +18,7 @@ namespace QLVT
     {
         String macn = "";
         int vitri = 0;
+        int them = 0;
         public frmNhanVien()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace QLVT
             // giu lai de dung trong phuc hoi.
             vitri = bdsNV.Position;
             // cho khung nhap lieu sang len de nhap.
+            txtMaNV.Enabled = true;
             groupBox1.Enabled = true;
             bdsNV.AddNew();
             txtChiNhanh.Text = macn;
@@ -39,6 +41,7 @@ namespace QLVT
             btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled= btn_InDSNV.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled  = btnThoat.Enabled = true;
             gcNhanVien.Enabled = false;
+            them = 1;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -85,42 +88,59 @@ namespace QLVT
                 dtpNgaySinh.Focus();
                 return;
             }
-            else
+            if (DateTime.Now.Year - dtpNgaySinh.DateTime.Year < 18)
             {
-                // khi thêm nhân viên thì chỉ thêm mà ko tạo thêm login, username gì hết, sau đó
-                // mới lấy nv chưa có login để tạo thêm login.
-                String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',MANV";
-                int kt = Program.ExecuteScalar(strLenh);
-                if (kt == 0)
+                MessageBox.Show("Nhân viên phải từ 18 tuổi trở lên!", "Thông báo lỗi",
+                    MessageBoxButtons.OK);
+                dtpNgaySinh.Focus();
+                return;
+            }
+            if (them == 1)
+            {
                 {
-                    try
+                    // khi thêm nhân viên thì chỉ thêm mà ko tạo thêm login, username gì hết, sau đó
+                    // mới lấy nv chưa có login để tạo thêm login.
+                    String strLenh = "EXECUTE dbo.SP_KT_ID N'" + txtMaNV.Text + "',MANV";
+                    int kt = Program.ExecuteScalar(strLenh);
+                    if (kt == 0)
                     {
-                        this.bdsNV.EndEdit();
-                        bdsNV.ResetCurrentItem();
-                        this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
-                        this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
-                        MessageBox.Show("Thêm nhân viên thành công!!!!");
-                        gcNhanVien.Enabled = true;
-                        btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
-                        btnGhi.Enabled = btnUndo.Enabled = false;
-                        groupBox1.Enabled = false;
+                        try
+                        {
+                            this.bdsNV.EndEdit();
+                            bdsNV.ResetCurrentItem();
+                            this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                            this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
+                            MessageBox.Show("Thêm nhân viên thành công!!!!");
+                            gcNhanVien.Enabled = true;
+                            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btn_InDSNV.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+                            btnGhi.Enabled = btnUndo.Enabled = false;
+                            groupBox1.Enabled = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi ghi nhân viên \n" + ex.Message, "", MessageBoxButtons.OK);
+                            return;
+                        }
                     }
-                    catch (Exception ex)
+                    else if (kt == 1)
                     {
-                        MessageBox.Show("Lỗi ghi nhân viên \n" + ex.Message, "", MessageBoxButtons.OK);
+                        MessageBox.Show("Mã nhân viên đã tồn tại trong cùng chi nhánh!!", "", MessageBoxButtons.OK);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi ghi nhân viên \nMã Nhân viên tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
                         return;
                     }
                 }
-                else if (kt == 1)
-                {
-                    MessageBox.Show("Mã nhân viên đã tồn tại trong cùng chi nhánh!!", "", MessageBoxButtons.OK);
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi ghi nhân viên \nMã Nhân viên tồn tại ở chi nhánh khác", "", MessageBoxButtons.OK);
-                    return;
-                }
+            }
+            else
+            {
+                this.bdsNV.EndEdit();
+                bdsNV.ResetCurrentItem();
+                this.nhanVienTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.nhanVienTableAdapter.Update(this.DS_NhanVien.NhanVien);//Ghi vào CSDL
+                MessageBox.Show("Sửa nhân viên thành công!!!!");
             }
         }
 
@@ -361,6 +381,22 @@ namespace QLVT
                 this.nhanVienTableAdapter.Fill(this.DS_NhanVien.NhanVien);
                 return;
             }
+        }
+
+        private void btn__Sua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            vitri = bdsNV.Position;
+            if (((DataRowView)bdsNV[vitri])["TrangThaiXoa"].ToString().Contains("1")){
+                MessageBox.Show("Nhân viên đã xóa!", "Thông báo", MessageBoxButtons.OK);
+            }
+            else {
+                gcNhanVien.Enabled = txtMaNV.Enabled = false;
+                groupBox1.Enabled = true;
+
+                btn_ChuyenCN.Enabled = btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+                btnGhi.Enabled = btnUndo.Enabled = true;
+            }
+            //txtMaNV.Enabled = false;
         }
     }
 }
