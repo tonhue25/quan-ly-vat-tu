@@ -212,7 +212,7 @@ namespace QLVT
             this.btn_Huy.Name = "btn_Huy";
             this.btn_Huy.Size = new System.Drawing.Size(75, 23);
             this.btn_Huy.TabIndex = 13;
-            this.btn_Huy.Text = "Hủy";
+            this.btn_Huy.Text = "Thoát";
             this.btn_Huy.UseVisualStyleBackColor = true;
             this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
             // 

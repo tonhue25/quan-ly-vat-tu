@@ -258,13 +258,17 @@ namespace QLVT
             cmbChiNhanh.SelectedIndex = Program.mChiNhanh;
             if (Program.mGroup == "CONGTY")
             {
-                // chi có công ty mới chuyển chi nhánh của nhân viên.
-                cmbChiNhanh.Enabled= btn_ChuyenCN.Enabled = btn_InDSNV.Enabled = true;
                 btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                cmbChiNhanh.Enabled = btn_ChuyenCN.Enabled = btn_InDSNV.Enabled = true;
+            }
+            else if (Program.mGroup == "CHINHANH")
+            {
+                cmbChiNhanh.Enabled = btn_ChuyenCN.Enabled  = false;
+                btnThem.Enabled = btn_InDSNV.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
             }
             else
             {
-                btnThem.Enabled = btn_InDSNV.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btnThem.Enabled =  btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
                 cmbChiNhanh.Enabled = btn_ChuyenCN.Enabled  = btn_InDSNV.Enabled = false;
             }
         }

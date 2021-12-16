@@ -140,6 +140,7 @@ namespace QLVT
                 int manv = int.Parse(cmbHoTen.SelectedValue.ToString());
                     String loginName = txtTK.Text;
                     String pass = txtPass.Text;
+                
                 if (Program.KetNoi() == 0) return;
                 String strLenh = "EXECUTE dbo.SP_TAOLOGIN N'" + loginName + "',N'" + pass + "',N'" + manv + "',N'" + type + "'";
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
@@ -149,6 +150,7 @@ namespace QLVT
 
                 Program.myReader.Close();
                 Program.conn.Close();
+                
             }
         }
 

@@ -68,10 +68,19 @@ namespace QLVT
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            Program.maPX = txtMaPX.Text;
-            Program.subFormCTPX = new subformCTPX();
-            Program.subFormCTPX.Show();
-            Program.frmChinh.Enabled = false;
+            String maNV = ((DataRowView)bdsPX[bdsPX.Position])["MANV"].ToString();
+            if (Program.username != maNV)
+            {
+                MessageBox.Show("Bạn không thêm chi tiết đơn đặt hàng trên phiếu không phải do mình tạo", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                Program.maPX = txtMaPX.Text;
+                Program.subFormCTPX = new subformCTPX();
+                Program.subFormCTPX.Show();
+                Program.frmChinh.Enabled = false;
+            }
         }
 
         private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e)

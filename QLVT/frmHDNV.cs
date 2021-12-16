@@ -109,14 +109,12 @@ namespace QLVT
 
         private void frmHDNV_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Dispose();
             Program.frmChinh.Enabled = true;
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            Program.frmChinh.Enabled = true;
+            //Program.frmChinh.Enabled = true;
         }
 
         private void btn_Preview_Click(object sender, EventArgs e)

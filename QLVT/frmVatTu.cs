@@ -46,11 +46,17 @@ namespace QLVT
 
             if (Program.mGroup == "CONGTY")
             {
-                btnThem.Enabled = btn_Sua.Enabled  =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                btn_inds.Enabled = true;
+                btnThem.Enabled =  btn_Sua.Enabled  =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+            }
+            else if (Program.mGroup == "CHINHANH")
+            {
+                btnThem.Enabled = btn_inds.Enabled = btn_Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
             }
             else
             {
-                btnThem.Enabled = btn_inds.Enabled = btn_Sua.Enabled  = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btn_inds.Enabled = false;
+                btnThem.Enabled = btn_Sua.Enabled  = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
             }
         }
 

@@ -224,6 +224,11 @@ namespace QLVT
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            /*if( getDataRow(bdsVT, "MAVT") != Program.username)
+            {
+                MessageBox.Show("Không thể xóa đơn hàng vì đây là phiếu nhân viên khác lập!!!", "", MessageBoxButtons.OK);
+                return;
+            }*/
             if (bdsCTDDH.Count > 0)
             {
                 MessageBox.Show("Không thể xóa đơn hàng vì đã lập CT!!!", "", MessageBoxButtons.OK);
@@ -273,11 +278,25 @@ namespace QLVT
 
         private void themCTDDH_Click(object sender, EventArgs e)
         {
-            // lấy mã đơn đặt hàng, để có thể lưu vô.
-            Program.maDDH = txtMaDDH.Text;
-            Program.subFormCTDDH = new subformCTDDH();
-            Program.subFormCTDDH.Show();
-            Program.frmChinh.Enabled = false;
+            String maNV = ((DataRowView)bdsDH[bdsDH.Position])["MANV"].ToString();
+            if (Program.username != maNV)
+            {
+                MessageBox.Show("Bạn không thêm chi tiết đơn đặt hàng trên phiếu không phải do mình tạo", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                // lấy mã đơn đặt hàng, để có thể lưu vô.
+                Program.maDDH = txtMaDDH.Text;
+                Program.subFormCTDDH = new subformCTDDH();
+                Program.subFormCTDDH.Show();
+                Program.frmChinh.Enabled = false;
+            }
+        }
+
+        private string getDataRow(BindingSource bindingSource, string column)
+        {
+            return ((DataRowView)bindingSource[bindingSource.Position])[column].ToString().Trim();
         }
     }
     

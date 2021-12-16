@@ -61,6 +61,7 @@ namespace QLVT
             else
             {
                 // nhom khac
+                cmbChiNhanh.Enabled = false;
                 btnThem.Enabled =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
                 cmbChiNhanh.Enabled = false;
             }

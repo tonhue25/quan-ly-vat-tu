@@ -69,6 +69,11 @@ namespace QLVT
             cmbChiNhanh.DisplayMember = "TENCN";
             cmbChiNhanh.ValueMember = "TENSERVER";
             cmbChiNhanh.SelectedIndex = Program.mChiNhanh;
+
+            if (Program.mGroup == "CHINHANH")
+            {
+                cmbChiNhanh.Enabled = false;
+            }
         }
 
         private void frmTHNX_FormClosing(object sender, FormClosingEventArgs e)
