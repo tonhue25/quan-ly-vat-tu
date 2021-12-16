@@ -548,6 +548,7 @@ namespace QLVT
             // txtMaKho
             // 
             this.txtMaKho.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPN, "MAKHO", true));
+            this.txtMaKho.Enabled = false;
             this.txtMaKho.Location = new System.Drawing.Point(94, 121);
             this.txtMaKho.Name = "txtMaKho";
             this.txtMaKho.Size = new System.Drawing.Size(121, 21);

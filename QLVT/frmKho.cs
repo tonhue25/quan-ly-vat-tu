@@ -155,7 +155,6 @@ namespace QLVT
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
             if (txtMaKho.Text.Trim() == "")
             {
                 MessageBox.Show("Mã kho không được để trống", "", MessageBoxButtons.OK);

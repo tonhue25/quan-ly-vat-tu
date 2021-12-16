@@ -36,7 +36,6 @@ namespace QLVT
             this.label3 = new System.Windows.Forms.Label();
             this.dayKT = new DevExpress.XtraEditors.DateEdit();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.btn_Print = new System.Windows.Forms.Button();
             this.btn_Preview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dayBD.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayBD.Properties)).BeginInit();
@@ -123,25 +122,16 @@ namespace QLVT
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(357, 143);
+            this.btn_Exit.Location = new System.Drawing.Point(301, 143);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(75, 23);
             this.btn_Exit.TabIndex = 15;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
             // 
-            // btn_Print
-            // 
-            this.btn_Print.Location = new System.Drawing.Point(240, 143);
-            this.btn_Print.Name = "btn_Print";
-            this.btn_Print.Size = new System.Drawing.Size(75, 23);
-            this.btn_Print.TabIndex = 14;
-            this.btn_Print.Text = "Print";
-            this.btn_Print.UseVisualStyleBackColor = true;
-            // 
             // btn_Preview
             // 
-            this.btn_Preview.Location = new System.Drawing.Point(130, 143);
+            this.btn_Preview.Location = new System.Drawing.Point(157, 143);
             this.btn_Preview.Name = "btn_Preview";
             this.btn_Preview.Size = new System.Drawing.Size(75, 23);
             this.btn_Preview.TabIndex = 13;
@@ -155,7 +145,6 @@ namespace QLVT
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 192);
             this.Controls.Add(this.btn_Exit);
-            this.Controls.Add(this.btn_Print);
             this.Controls.Add(this.btn_Preview);
             this.Controls.Add(this.dayKT);
             this.Controls.Add(this.label3);
@@ -184,7 +173,6 @@ namespace QLVT
         public DevExpress.XtraEditors.DateEdit dayBD;
         public DevExpress.XtraEditors.DateEdit dayKT;
         private System.Windows.Forms.Button btn_Exit;
-        private System.Windows.Forms.Button btn_Print;
         private System.Windows.Forms.Button btn_Preview;
     }
 }

@@ -26,11 +26,12 @@ namespace QLVT
 
             this.sP_CTDDHTableAdapter.Connection.ConnectionString = Program.connstr;
             this.sP_CTDDHTableAdapter.Fill(this.dS_CTDDH.SP_CTDDH, Program.maDDH);
+
+            txtMaPN.Text = Program.maPN;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
             if (txtMaPN.Text.Trim() == "")
             {
                 MessageBox.Show("Mã phiếu nhập không được để trống", "", MessageBoxButtons.OK);
@@ -83,25 +84,24 @@ namespace QLVT
                     {
                         string maVT = txtMaVT.Text;
                         int soLuong = int.Parse(txtSL.Text.ToString());
-
                         bdsCTPN.EndEdit();
                         bdsCTPN.ResetCurrentItem();
 
                         this.cTPNTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.cTPNTableAdapter.Update(this.dS_DH.CTPN);
 
-                        MessageBox.Show("Thêm chi tiết phiếu nhập " + Program.maPN + "thành công !!!");
+                        MessageBox.Show("Thêm chi tiết phiếu nhập " + Program.maPN.Trim() + "thành công !!!");
                         // thêm phiếu nhập thì cần update số lượng.
                         String strLenh2 = "EXECUTE dbo.SP_UpdateSLVatTu N'" + maVT + "'," + soLuong + ",IMPORT";
                         int kt2 = Program.ExecuteScalar(strLenh2);
                         if (kt2 == 1)
                         {
-                            MessageBox.Show("Cập nhập số lượng vật tư thành công !!!");
+                            /*MessageBox.Show("Cập nhập số lượng vật tư thành công !!!");*/
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi ghi chi tiết phiếu nhập " + Program.maPN + "\n" + ex.Message, "", MessageBoxButtons.OK);
+                        MessageBox.Show("Lỗi ghi chi tiết phiếu nhập " + Program.maPN.Trim() + "\n" + ex.Message, "", MessageBoxButtons.OK);
                         return;
                     }
                 }

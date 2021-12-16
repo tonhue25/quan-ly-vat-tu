@@ -106,12 +106,6 @@ namespace QLVT
                 txtDonGia.Focus();
                 return;
             }
-            /*if (int.Parse(txtSL.Text.Trim()) > int.Parse(getDataRow(bdsCTDDH, "SOLUONG")))
-            {
-                MessageBox.Show("Không được nhập quá số lượng đặt", "", MessageBoxButtons.OK);
-                txtSL.Focus();
-                return;
-            }*/
             else
             {
                 String strLenh = "EXECUTE dbo.SP_KT_ID_MACT N'" + txtMaDDH.Text +"',"+txtMaVT.Text+",MACTDDH";
@@ -120,7 +114,7 @@ namespace QLVT
                 {
                     try
                     {
-                        bdsCTDDH.EndEdit(); //ghi vào data set
+                        bdsCTDDH.EndEdit();
                         bdsCTDDH.ResetCurrentItem();
 
                         // thêm vào chi tiết đặt hàng của đơn đặt hàng đó, chứ ko phải update vật tư nha.

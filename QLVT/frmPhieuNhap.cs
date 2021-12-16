@@ -243,13 +243,20 @@ namespace QLVT
 
         private void btn_ThemCTPN_Click(object sender, EventArgs e)
         {
-            Program.maPN = txtMaPN.Text;
-            Program.maDDH = getDataRow(bdsDH, "MasoDDH");
+            if (bdsCTPN.Count > 0)
+            {
+                MessageBox.Show("Phiếu đã được lập chi tiết!!!", "", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                Program.maPN = txtMaPN.Text;
+                Program.maDDH = getDataRow(bdsDH, "MasoDDH");
 
-            
-            subformCTPN f = new subformCTPN();
-            f.Show();
-            Program.frmChinh.Enabled = false;
+                subformCTPN f = new subformCTPN();
+                f.Show();
+                Program.frmChinh.Enabled = false;
+            }
         }
 
         private string getDataRow(BindingSource bindingSource, string column)
