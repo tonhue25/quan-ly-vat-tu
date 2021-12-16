@@ -42,19 +42,23 @@ namespace QLVT
             HOTEN.Text = "Họ tên nhân viên : " + Program.mHoten;
             NHOM.Text = "Nhóm : " + Program.mGroup;
             // phan quyen
-            rib_BaoCao.Visible = rib_DanhMuc.Visible  = true;
+            
             // tiep tuc if tren Program.mGroup de bat/ tat cac nut lệnh tương ứng trên menu chính
             // ex: công ty chỉ được quyền xem dữ liệu.
             if (Program.mGroup == "USER")
             {
                 btn_TaoTK.Enabled = false;
+                rib_DanhMuc.Visible = true;
             }
             else if (Program.mGroup == "CONGTY")
             {
+                rib_BaoCao.Visible = rib_DanhMuc.Visible = true;
                 btn_TaoTK.Enabled = true;
             }
             else if (Program.mGroup == "CHINHANH")
             {
+                rib_DanhMuc.Visible = true;
+                rib_BaoCao.Visible = true;
                 btn_TaoTK.Enabled = true;
             }
         }

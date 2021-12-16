@@ -264,7 +264,7 @@ namespace QLVT
             }
             else
             {
-                btnThem.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btnThem.Enabled = btn_InDSNV.Enabled = btn__Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
                 cmbChiNhanh.Enabled = btn_ChuyenCN.Enabled  = btn_InDSNV.Enabled = false;
             }
         }

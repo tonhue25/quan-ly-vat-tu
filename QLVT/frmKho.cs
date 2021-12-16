@@ -56,7 +56,7 @@ namespace QLVT
             {
                 cmbChiNhanh.Enabled = true;
                 // khong duoc them xoa sua, => ko can phuc hoi
-                btnThem.Enabled =  btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
+                btnThem.Enabled = btn_Sua.Enabled = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = false;
             }
             else
             {

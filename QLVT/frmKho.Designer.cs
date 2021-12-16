@@ -40,6 +40,7 @@ namespace QLVT
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
@@ -77,7 +78,6 @@ namespace QLVT
             this.phieuNhapTableAdapter = new QLVT.DS_KhoTableAdapters.PhieuNhapTableAdapter();
             this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
             this.phieuXuatTableAdapter = new QLVT.DS_KhoTableAdapters.PhieuXuatTableAdapter();
-            this.btn_Sua = new DevExpress.XtraBars.BarButtonItem();
             mAKHOLabel = new System.Windows.Forms.Label();
             tENKHOLabel = new System.Windows.Forms.Label();
             dIACHILabel = new System.Windows.Forms.Label();
@@ -168,7 +168,7 @@ namespace QLVT
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_Sua),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btn_Sua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -200,6 +200,15 @@ namespace QLVT
             this.btnXoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.LargeImage")));
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
+            // 
+            // btn_Sua
+            // 
+            this.btn_Sua.Caption = "Sửa";
+            this.btn_Sua.Id = 8;
+            this.btn_Sua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sua.ImageOptions.Image")));
+            this.btn_Sua.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_Sua.ImageOptions.LargeImage")));
+            this.btn_Sua.Name = "btn_Sua";
+            this.btn_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Sua_ItemClick);
             // 
             // btnUndo
             // 
@@ -483,13 +492,6 @@ namespace QLVT
             // phieuXuatTableAdapter
             // 
             this.phieuXuatTableAdapter.ClearBeforeFill = true;
-            // 
-            // btn_Sua
-            // 
-            this.btn_Sua.Caption = "Sửa";
-            this.btn_Sua.Id = 8;
-            this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Sua_ItemClick);
             // 
             // frmKho
             // 

@@ -112,9 +112,11 @@ namespace QLVT
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bdsDH.Count == 0)
+
+            // 1 đơn đặt hàng chỉ có 1 phiếu nhập!!
+            if (bdsPN.Count > 0)
             {
-                MessageBox.Show("Chưa có đơn đặt hàng!!!", "", MessageBoxButtons.OK);
+                MessageBox.Show("Đã có phiếu nhập!!!", "", MessageBoxButtons.OK);
                 return;
             }
             else

@@ -37,7 +37,6 @@ namespace QLVT
             this.nhanVienTableAdapter = new QLVT.DS_NhanVienTableAdapters.NhanVienTableAdapter();
             this.tableAdapterManager = new QLVT.DS_NhanVienTableAdapters.TableAdapterManager();
             this.btn_Preview = new System.Windows.Forms.Button();
-            this.btn_Print = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dS_NhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).BeginInit();
@@ -86,7 +85,7 @@ namespace QLVT
             // 
             // btn_Preview
             // 
-            this.btn_Preview.Location = new System.Drawing.Point(39, 95);
+            this.btn_Preview.Location = new System.Drawing.Point(103, 95);
             this.btn_Preview.Name = "btn_Preview";
             this.btn_Preview.Size = new System.Drawing.Size(75, 23);
             this.btn_Preview.TabIndex = 10;
@@ -94,19 +93,9 @@ namespace QLVT
             this.btn_Preview.UseVisualStyleBackColor = true;
             this.btn_Preview.Click += new System.EventHandler(this.btn_Preview_Click);
             // 
-            // btn_Print
-            // 
-            this.btn_Print.Location = new System.Drawing.Point(149, 95);
-            this.btn_Print.Name = "btn_Print";
-            this.btn_Print.Size = new System.Drawing.Size(75, 23);
-            this.btn_Print.TabIndex = 11;
-            this.btn_Print.Text = "Print";
-            this.btn_Print.UseVisualStyleBackColor = true;
-            this.btn_Print.Click += new System.EventHandler(this.btn_Print_Click);
-            // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(266, 95);
+            this.btn_Exit.Location = new System.Drawing.Point(211, 95);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(75, 23);
             this.btn_Exit.TabIndex = 12;
@@ -120,7 +109,6 @@ namespace QLVT
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 148);
             this.Controls.Add(this.btn_Exit);
-            this.Controls.Add(this.btn_Print);
             this.Controls.Add(this.btn_Preview);
             this.Controls.Add(this.cmbChiNhanh);
             this.Controls.Add(this.label1);
@@ -144,7 +132,6 @@ namespace QLVT
         private DS_NhanVienTableAdapters.NhanVienTableAdapter nhanVienTableAdapter;
         private DS_NhanVienTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Button btn_Preview;
-        private System.Windows.Forms.Button btn_Print;
         private System.Windows.Forms.Button btn_Exit;
     }
 }

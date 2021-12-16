@@ -44,6 +44,7 @@ namespace QLVT
         public static String maDDH = "";
         public static String maPN = "";
         public static String maPX = "";
+
         public static int KetNoi()
         {
             if (Program.conn != null && Program.conn.State == ConnectionState.Open)

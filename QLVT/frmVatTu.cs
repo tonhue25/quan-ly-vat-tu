@@ -43,7 +43,6 @@ namespace QLVT
 
             this.cTPXTableAdapter.Connection.ConnectionString = Program.connstr;
             this.cTPXTableAdapter.Fill(this.DS_VT.CTPX);
-            // phan quyen
 
             if (Program.mGroup == "CONGTY")
             {
@@ -51,8 +50,7 @@ namespace QLVT
             }
             else
             {
-                // nhom khac
-                btnThem.Enabled = btn_Sua.Enabled  = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
+                btnThem.Enabled = btn_inds.Enabled = btn_Sua.Enabled  = btnXoa.Enabled = btnGhi.Enabled = btnUndo.Enabled = true;
             }
         }
 
